@@ -42,6 +42,9 @@ public class FilterPumpCleaning implements Serializable {
     @Column(name = "user_id")
     private Integer userId;
 
+    @ManyToOne
+    private Device device;
+
     public Long getId() {
         return id;
     }
@@ -113,6 +116,19 @@ public class FilterPumpCleaning implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Device getDevice() {
+        return device;
+    }
+
+    public FilterPumpCleaning device(Device device) {
+        this.device = device;
+        return this;
+    }
+
+    public void setDevice(Device device) {
+        this.device = device;
     }
 
     @Override

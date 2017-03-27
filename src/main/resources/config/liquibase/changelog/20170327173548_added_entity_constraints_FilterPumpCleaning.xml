@@ -4,19 +4,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <!--
-        Added the constraints for entity Tank.
+        Added the constraints for entity FilterPumpCleaning.
     -->
-    <changeSet id="20170326000434-2" author="jhipster">
+    <changeSet id="20170327173548-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="location_id"
-                                 baseTableName="tank"
-                                 constraintName="fk_tank_location_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="location"/>
-
         <addForeignKeyConstraint baseColumnNames="device_id"
-                                 baseTableName="tank"
-                                 constraintName="fk_tank_device_id"
+                                 baseTableName="filter_pump_cleaning"
+                                 constraintName="fk_filter_pump_cleaning_device_id"
                                  referencedColumnNames="id"
                                  referencedTableName="device"/>
 

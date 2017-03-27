@@ -50,7 +50,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20170326000434",
+    "changelogDate": "20170327173548",
     "entityTableName": "water_change",
     "dto": "no",
     "pagination": "no",

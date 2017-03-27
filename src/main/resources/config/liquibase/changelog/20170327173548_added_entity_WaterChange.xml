@@ -17,7 +17,7 @@
     <!--
         Added the entity WaterChange.
     -->
-    <changeSet id="20170326000434-1" author="jhipster">
+    <changeSet id="20170327173548-1" author="jhipster">
         <createTable tableName="water_change">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>

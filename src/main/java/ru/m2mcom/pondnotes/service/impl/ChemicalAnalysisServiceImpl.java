@@ -73,7 +73,7 @@ public class ChemicalAnalysisServiceImpl implements ChemicalAnalysisService{
     @Transactional(readOnly = true)
     public ChemicalAnalysis findOne(Long id) {
         log.debug("Request to get ChemicalAnalysis : {}", id);
-        ChemicalAnalysis chemicalAnalysis = chemicalAnalysisRepository.findOneWithEagerRelationships(id);
+        ChemicalAnalysis chemicalAnalysis = chemicalAnalysisRepository.findOne(id);
         return chemicalAnalysis;
     }
 

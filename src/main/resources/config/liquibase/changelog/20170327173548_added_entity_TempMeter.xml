@@ -15,27 +15,15 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity LiveStock.
+        Added the entity TempMeter.
     -->
-    <changeSet id="20170326000434-1" author="jhipster">
-        <createTable tableName="live_stock">
+    <changeSet id="20170327173548-1" author="jhipster">
+        <createTable tableName="temp_meter">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date" type="timestamp">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="reason" type="varchar(255)">
+            <column name="reading_date" type="timestamp">
                 <constraints nullable="true" />
-            </column>
-
-            <column name="description" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="qty" type="integer">
-                <constraints nullable="false" />
             </column>
 
             <column name="temp_val" type="double">
@@ -56,7 +44,7 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="live_stock" columnName="date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="temp_meter" columnName="reading_date" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

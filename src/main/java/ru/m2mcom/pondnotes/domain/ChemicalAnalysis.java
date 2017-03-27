@@ -8,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -53,12 +51,8 @@ public class ChemicalAnalysis implements Serializable {
     @Column(name = "user_id")
     private Integer userId;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "chemical_analysis_tank",
-               joinColumns = @JoinColumn(name="chemical_analyses_id", referencedColumnName="id"),
-               inverseJoinColumns = @JoinColumn(name="tanks_id", referencedColumnName="id"))
-    private Set<Tank> tanks = new HashSet<>();
+    @ManyToOne
+    private Tank tank;
 
     public Long getId() {
         return id;
@@ -172,27 +166,17 @@ public class ChemicalAnalysis implements Serializable {
         this.userId = userId;
     }
 
-    public Set<Tank> getTanks() {
-        return tanks;
+    public Tank getTank() {
+        return tank;
     }
 
-    public ChemicalAnalysis tanks(Set<Tank> tanks) {
-        this.tanks = tanks;
+    public ChemicalAnalysis tank(Tank tank) {
+        this.tank = tank;
         return this;
     }
 
-    public ChemicalAnalysis addTank(Tank tank) {
-        this.tanks.add(tank);
-        return this;
-    }
-
-    public ChemicalAnalysis removeTank(Tank tank) {
-        this.tanks.remove(tank);
-        return this;
-    }
-
-    public void setTanks(Set<Tank> tanks) {
-        this.tanks = tanks;
+    public void setTank(Tank tank) {
+        this.tank = tank;
     }
 
     @Override

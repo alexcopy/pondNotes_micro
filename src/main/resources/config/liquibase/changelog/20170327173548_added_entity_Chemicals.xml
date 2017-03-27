@@ -15,10 +15,10 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity ChemicalAnalysis.
+        Added the entity Chemicals.
     -->
-    <changeSet id="20170326000434-1" author="jhipster">
-        <createTable tableName="chemical_analysis">
+    <changeSet id="20170327173548-1" author="jhipster">
+        <createTable tableName="chemicals">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -26,19 +26,11 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="n_o_2" type="varchar(255)">
+            <column name="qty" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="n_o_3" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="n_h_4" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="ph" type="varchar(255)">
+            <column name="reason" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -54,20 +46,13 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="tank_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="chemical_analysis" columnName="date" columnDataType="datetime"/>
-        
-        <createTable tableName="chemical_analysis_tank">
-            <column name="tanks_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="chemical_analyses_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="chemical_analyses_id, tanks_id" tableName="chemical_analysis_tank"/>
+        <dropDefaultValue tableName="chemicals" columnName="date" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

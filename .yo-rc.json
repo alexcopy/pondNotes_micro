@@ -21,7 +21,7 @@
     "serviceDiscoveryType": "eureka",
     "buildTool": "maven",
     "enableSocialSignIn": false,
-    "jwtSecretKey": "033a135a8afa0e56e014dad99a29082a6ffd7a8d",
+    "jwtSecretKey": "7a409c10e41ae9dbc0ef5b93568e16e805a13717",
     "enableTranslation": true,
     "applicationType": "microservice",
     "testFrameworks": [

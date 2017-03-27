@@ -2,9 +2,11 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "one-to-one",
             "relationshipName": "tank",
             "otherEntityName": "tank",
+            "otherEntityField": "tankName",
+            "ownerSide": true,
             "otherEntityRelationshipName": "device"
         }
     ],
@@ -40,7 +42,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20170326000434",
+    "changelogDate": "20170327173548",
     "entityTableName": "device",
     "dto": "no",
     "pagination": "infinite-scroll",

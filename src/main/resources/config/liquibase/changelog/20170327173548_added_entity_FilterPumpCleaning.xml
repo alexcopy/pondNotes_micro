@@ -15,23 +15,23 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Tank.
+        Added the entity FilterPumpCleaning.
     -->
-    <changeSet id="20170326000434-1" author="jhipster">
-        <createTable tableName="tank">
+    <changeSet id="20170327173548-1" author="jhipster">
+        <createTable tableName="filter_pump_cleaning">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="tank_name" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="tank_type" type="varchar(255)">
+            <column name="cleaning_date" type="timestamp">
                 <constraints nullable="false" />
             </column>
 
             <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
+            </column>
+
+            <column name="temp_val" type="double">
+                <constraints nullable="false" />
             </column>
 
             <column name="timestamp" type="integer">
@@ -42,16 +42,13 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="location_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
             <column name="device_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="filter_pump_cleaning" columnName="cleaning_date" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

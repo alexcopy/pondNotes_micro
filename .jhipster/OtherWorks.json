@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "tank",
+            "otherEntityName": "tank",
+            "otherEntityField": "tankName"
+        }
+    ],
     "fields": [
         {
             "fieldName": "date",
@@ -37,7 +44,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20170326000434",
+    "changelogDate": "20170327173548",
     "entityTableName": "other_works",
     "dto": "no",
     "pagination": "no",

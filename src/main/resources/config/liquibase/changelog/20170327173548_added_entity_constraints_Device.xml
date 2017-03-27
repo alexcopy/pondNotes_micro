@@ -4,13 +4,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <!--
-        Added the constraints for entity LiveStock.
+        Added the constraints for entity Device.
     -->
-    <changeSet id="20170326000434-2" author="jhipster">
+    <changeSet id="20170327173548-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="tank_id"
-                                 baseTableName="live_stock"
-                                 constraintName="fk_live_stock_tank_id"
+                                 baseTableName="device"
+                                 constraintName="fk_device_tank_id"
                                  referencedColumnNames="id"
                                  referencedTableName="tank"/>
 

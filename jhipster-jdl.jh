@@ -1,6 +1,3 @@
-
-
-
 entity Location {
 	streetAddress String,
 	postalCode String,
@@ -117,26 +114,19 @@ microservice * with pondNotes
 search * with elasticsearch
 
 
-/**
-relationship ManyToOne {
-   FilterPumpCleaning{device(deviceName)} to Device,
-   MeterReading {tank(tankName)} to Tank,
-   Chemicals{tank(tankName)} to Tank,
-   OtherWorks {tank(tankName)} to Tank
-}
-*/
-relationship ManyToMany {
-   TempMeter{tank(tankName)} to Tank,
-   ChemicalAnalysis{tank(tankName)} to Tank
-}
-
-relationship OneToMany {
+relationship OneToOne{
    Device{tank(tankName)} to Tank
 }
 relationship ManyToOne {
+   Tank{location(streetAddress)} to Location,
    WaterChange{tank(tankName)} to Tank,
    LiveStock {tank(tankName)} to Tank,
-   Tank{location(streetAddress)} to Location
+   MeterReading{tank(tankName)} to Tank,
+   OtherWorks{tank(tankName)} to Tank,
+   TempMeter{tank(tankName)} to Tank,
+   ChemicalAnalysis{tank(tankName)} to Tank,
+   FilterPumpCleaning{device(deviceName)} to Device,
+   Chemicals{tank(tankName)} to Tank
 }
 
 // Set pagination options
@@ -150,4 +140,3 @@ paginate FilterPumpCleaning, ChemicalAnalysis, Chemicals, LiveStock with paginat
 service all with serviceImpl
 // Set an angular suffix
 angularSuffix * with notes
-

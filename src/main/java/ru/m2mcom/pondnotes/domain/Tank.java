@@ -47,9 +47,6 @@ public class Tank implements Serializable {
     @ManyToOne
     private Location location;
 
-    @ManyToOne
-    private Device device;
-
     public Long getId() {
         return id;
     }
@@ -134,19 +131,6 @@ public class Tank implements Serializable {
 
     public void setLocation(Location location) {
         this.location = location;
-    }
-
-    public Device getDevice() {
-        return device;
-    }
-
-    public Tank device(Device device) {
-        this.device = device;
-        return this;
-    }
-
-    public void setDevice(Device device) {
-        this.device = device;
     }
 
     @Override

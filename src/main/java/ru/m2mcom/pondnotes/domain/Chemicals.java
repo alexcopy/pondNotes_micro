@@ -45,6 +45,9 @@ public class Chemicals implements Serializable {
     @Column(name = "user_id")
     private Integer userId;
 
+    @ManyToOne
+    private Tank tank;
+
     public Long getId() {
         return id;
     }
@@ -129,6 +132,19 @@ public class Chemicals implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Tank getTank() {
+        return tank;
+    }
+
+    public Chemicals tank(Tank tank) {
+        this.tank = tank;
+        return this;
+    }
+
+    public void setTank(Tank tank) {
+        this.tank = tank;
     }
 
     @Override

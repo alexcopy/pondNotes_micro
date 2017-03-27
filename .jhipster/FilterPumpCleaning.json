@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "device",
+            "otherEntityName": "device",
+            "otherEntityField": "deviceName"
+        }
+    ],
     "fields": [
         {
             "fieldName": "cleaningDate",
@@ -29,7 +36,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20170326000434",
+    "changelogDate": "20170327173548",
     "entityTableName": "filter_pump_cleaning",
     "dto": "no",
     "pagination": "pagination",

@@ -73,7 +73,7 @@ public class TempMeterServiceImpl implements TempMeterService{
     @Transactional(readOnly = true)
     public TempMeter findOne(Long id) {
         log.debug("Request to get TempMeter : {}", id);
-        TempMeter tempMeter = tempMeterRepository.findOneWithEagerRelationships(id);
+        TempMeter tempMeter = tempMeterRepository.findOne(id);
         return tempMeter;
     }
 

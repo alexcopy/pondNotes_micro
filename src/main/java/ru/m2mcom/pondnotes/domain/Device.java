@@ -1,6 +1,5 @@
 package ru.m2mcom.pondnotes.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -8,8 +7,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 import ru.m2mcom.pondnotes.domain.enumeration.DeviceType;
@@ -48,10 +45,9 @@ public class Device implements Serializable {
     @Column(name = "user_id")
     private Integer userId;
 
-    @OneToMany(mappedBy = "device")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Tank> tanks = new HashSet<>();
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Tank tank;
 
     public Long getId() {
         return id;
@@ -126,29 +122,17 @@ public class Device implements Serializable {
         this.userId = userId;
     }
 
-    public Set<Tank> getTanks() {
-        return tanks;
+    public Tank getTank() {
+        return tank;
     }
 
-    public Device tanks(Set<Tank> tanks) {
-        this.tanks = tanks;
+    public Device tank(Tank tank) {
+        this.tank = tank;
         return this;
     }
 
-    public Device addTank(Tank tank) {
-        this.tanks.add(tank);
-        tank.setDevice(this);
-        return this;
-    }
-
-    public Device removeTank(Tank tank) {
-        this.tanks.remove(tank);
-        tank.setDevice(null);
-        return this;
-    }
-
-    public void setTanks(Set<Tank> tanks) {
-        this.tanks = tanks;
+    public void setTank(Tank tank) {
+        this.tank = tank;
     }
 
     @Override

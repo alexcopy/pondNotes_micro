@@ -8,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -40,12 +38,8 @@ public class TempMeter implements Serializable {
     @Column(name = "user_id")
     private Integer userId;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "temp_meter_tank",
-               joinColumns = @JoinColumn(name="temp_meters_id", referencedColumnName="id"),
-               inverseJoinColumns = @JoinColumn(name="tanks_id", referencedColumnName="id"))
-    private Set<Tank> tanks = new HashSet<>();
+    @ManyToOne
+    private Tank tank;
 
     public Long getId() {
         return id;
@@ -107,27 +101,17 @@ public class TempMeter implements Serializable {
         this.userId = userId;
     }
 
-    public Set<Tank> getTanks() {
-        return tanks;
+    public Tank getTank() {
+        return tank;
     }
 
-    public TempMeter tanks(Set<Tank> tanks) {
-        this.tanks = tanks;
+    public TempMeter tank(Tank tank) {
+        this.tank = tank;
         return this;
     }
 
-    public TempMeter addTank(Tank tank) {
-        this.tanks.add(tank);
-        return this;
-    }
-
-    public TempMeter removeTank(Tank tank) {
-        this.tanks.remove(tank);
-        return this;
-    }
-
-    public void setTanks(Set<Tank> tanks) {
-        this.tanks = tanks;
+    public void setTank(Tank tank) {
+        this.tank = tank;
     }
 
     @Override
