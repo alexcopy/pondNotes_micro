@@ -1,0 +1,11 @@
+
+
+  ${AnsiColor.GREEN}██████╗ ${AnsiColor.RED} ███╗   ██╗ ██████╗ ████████╗███████╗███████╗
+  ${AnsiColor.GREEN}██╔══██╗${AnsiColor.RED} ████╗  ██║██╔═══██╗╚══██╔══╝██╔════╝██╔════╝
+  ${AnsiColor.GREEN}██████╔╝${AnsiColor.RED} ██╔██╗ ██║██║   ██║   ██║   █████╗  ███████╗
+  ${AnsiColor.GREEN}██╔═══╝ ${AnsiColor.RED} ██║╚██╗██║██║   ██║   ██║   ██╔══╝  ╚════██║
+  ${AnsiColor.GREEN}██║     ${AnsiColor.RED} ██║ ╚████║╚██████╔╝   ██║   ███████╗███████║
+  ${AnsiColor.GREEN}╚═╝     ${AnsiColor.RED} ╚═╝  ╚═══╝ ╚═════╝    ╚═╝   ╚══════╝╚══════╝
+
+${AnsiColor.BRIGHT_BLUE}:: PNotes 🤓  :: Running Spring Boot ${spring-boot.version} ::
+:: http://pnotes.m2mcom.ru ::${AnsiColor.DEFAULT}

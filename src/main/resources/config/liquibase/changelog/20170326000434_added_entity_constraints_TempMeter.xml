@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity TempMeter.
+    -->
+    <changeSet id="20170326000434-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="temp_meters_id"
+                                 baseTableName="temp_meter_tank"
+                                 constraintName="fk_temp_meter_tank_temp_meters_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="temp_meter"/>
+        <addForeignKeyConstraint baseColumnNames="tanks_id"
+                                 baseTableName="temp_meter_tank"
+                                 constraintName="fk_temp_meter_tank_tanks_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tank"/>
+        
+    </changeSet>
+</databaseChangeLog>
