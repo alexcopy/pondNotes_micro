@@ -42,9 +42,11 @@ public class Device implements Serializable {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @NotNull
-    @Column(name = "timestamp", nullable = false)
+    @Column(name = "timestamp")
     private Integer timestamp;
+
+    @Column(name = "user_id")
+    private Integer userId;
 
     @OneToMany(mappedBy = "device")
     @JsonIgnore
@@ -111,6 +113,19 @@ public class Device implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public Device userId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Set<Tank> getTanks() {
         return tanks;
     }
@@ -164,6 +179,7 @@ public class Device implements Serializable {
             ", deviceType='" + deviceType + "'" +
             ", description='" + description + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", userId='" + userId + "'" +
             '}';
     }
 }

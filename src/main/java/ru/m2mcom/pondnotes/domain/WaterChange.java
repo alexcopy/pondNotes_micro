@@ -47,6 +47,9 @@ public class WaterChange implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
+    @Column(name = "user_id")
+    private Integer userId;
+
     @ManyToOne
     private Tank tank;
 
@@ -136,6 +139,19 @@ public class WaterChange implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public WaterChange userId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Tank getTank() {
         return tank;
     }
@@ -179,6 +195,7 @@ public class WaterChange implements Serializable {
             ", readingAfter='" + readingAfter + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", userId='" + userId + "'" +
             '}';
     }
 }

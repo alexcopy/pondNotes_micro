@@ -68,7 +68,7 @@ class TankGatlingTest extends Simulation {
             .exec(http("Create new tank")
             .post("/pondnotes/api/tanks")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "tankName":"SAMPLE_TEXT", "tankType":null, "description":"SAMPLE_TEXT", "timestamp":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "tankName":"SAMPLE_TEXT", "tankType":null, "description":"SAMPLE_TEXT", "timestamp":"0", "userId":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_tank_url"))).exitHereIfFailed
             .pause(10)

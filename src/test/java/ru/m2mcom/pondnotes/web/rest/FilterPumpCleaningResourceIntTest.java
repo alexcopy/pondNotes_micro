@@ -56,6 +56,9 @@ public class FilterPumpCleaningResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private FilterPumpCleaningRepository filterPumpCleaningRepository;
 
@@ -102,7 +105,8 @@ public class FilterPumpCleaningResourceIntTest {
             .cleaningDate(DEFAULT_CLEANING_DATE)
             .description(DEFAULT_DESCRIPTION)
             .tempVal(DEFAULT_TEMP_VAL)
-            .timestamp(DEFAULT_TIMESTAMP);
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return filterPumpCleaning;
     }
 
@@ -131,6 +135,7 @@ public class FilterPumpCleaningResourceIntTest {
         assertThat(testFilterPumpCleaning.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testFilterPumpCleaning.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testFilterPumpCleaning.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testFilterPumpCleaning.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the FilterPumpCleaning in Elasticsearch
         FilterPumpCleaning filterPumpCleaningEs = filterPumpCleaningSearchRepository.findOne(testFilterPumpCleaning.getId());
@@ -206,7 +211,8 @@ public class FilterPumpCleaningResourceIntTest {
             .andExpect(jsonPath("$.[*].cleaningDate").value(hasItem(sameInstant(DEFAULT_CLEANING_DATE))))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -223,7 +229,8 @@ public class FilterPumpCleaningResourceIntTest {
             .andExpect(jsonPath("$.cleaningDate").value(sameInstant(DEFAULT_CLEANING_DATE)))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -248,7 +255,8 @@ public class FilterPumpCleaningResourceIntTest {
             .cleaningDate(UPDATED_CLEANING_DATE)
             .description(UPDATED_DESCRIPTION)
             .tempVal(UPDATED_TEMP_VAL)
-            .timestamp(UPDATED_TIMESTAMP);
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restFilterPumpCleaningMockMvc.perform(put("/api/filter-pump-cleanings")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -263,6 +271,7 @@ public class FilterPumpCleaningResourceIntTest {
         assertThat(testFilterPumpCleaning.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testFilterPumpCleaning.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testFilterPumpCleaning.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testFilterPumpCleaning.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the FilterPumpCleaning in Elasticsearch
         FilterPumpCleaning filterPumpCleaningEs = filterPumpCleaningSearchRepository.findOne(testFilterPumpCleaning.getId());
@@ -323,7 +332,8 @@ public class FilterPumpCleaningResourceIntTest {
             .andExpect(jsonPath("$.[*].cleaningDate").value(hasItem(sameInstant(DEFAULT_CLEANING_DATE))))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

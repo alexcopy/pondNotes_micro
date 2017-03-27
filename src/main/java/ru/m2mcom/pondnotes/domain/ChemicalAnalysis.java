@@ -50,6 +50,9 @@ public class ChemicalAnalysis implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
+    @Column(name = "user_id")
+    private Integer userId;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "chemical_analysis_tank",
@@ -156,6 +159,19 @@ public class ChemicalAnalysis implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public ChemicalAnalysis userId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Set<Tank> getTanks() {
         return tanks;
     }
@@ -210,6 +226,7 @@ public class ChemicalAnalysis implements Serializable {
             ", ph='" + ph + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", userId='" + userId + "'" +
             '}';
     }
 }

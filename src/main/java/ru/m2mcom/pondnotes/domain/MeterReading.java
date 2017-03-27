@@ -40,6 +40,12 @@ public class MeterReading implements Serializable {
     @Column(name = "temp_val", nullable = false)
     private Double tempVal;
 
+    @Column(name = "timestamp")
+    private Integer timestamp;
+
+    @Column(name = "user_id")
+    private Integer userId;
+
     public Long getId() {
         return id;
     }
@@ -100,6 +106,32 @@ public class MeterReading implements Serializable {
         this.tempVal = tempVal;
     }
 
+    public Integer getTimestamp() {
+        return timestamp;
+    }
+
+    public MeterReading timestamp(Integer timestamp) {
+        this.timestamp = timestamp;
+        return this;
+    }
+
+    public void setTimestamp(Integer timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public MeterReading userId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -128,6 +160,8 @@ public class MeterReading implements Serializable {
             ", description='" + description + "'" +
             ", reading='" + reading + "'" +
             ", tempVal='" + tempVal + "'" +
+            ", timestamp='" + timestamp + "'" +
+            ", userId='" + userId + "'" +
             '}';
     }
 }

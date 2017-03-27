@@ -52,6 +52,9 @@ public class TankResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private TankRepository tankRepository;
 
@@ -98,7 +101,8 @@ public class TankResourceIntTest {
             .tankName(DEFAULT_TANK_NAME)
             .tankType(DEFAULT_TANK_TYPE)
             .description(DEFAULT_DESCRIPTION)
-            .timestamp(DEFAULT_TIMESTAMP);
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return tank;
     }
 
@@ -127,6 +131,7 @@ public class TankResourceIntTest {
         assertThat(testTank.getTankType()).isEqualTo(DEFAULT_TANK_TYPE);
         assertThat(testTank.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTank.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testTank.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the Tank in Elasticsearch
         Tank tankEs = tankSearchRepository.findOne(testTank.getId());
@@ -190,24 +195,6 @@ public class TankResourceIntTest {
 
     @Test
     @Transactional
-    public void checkTimestampIsRequired() throws Exception {
-        int databaseSizeBeforeTest = tankRepository.findAll().size();
-        // set the field null
-        tank.setTimestamp(null);
-
-        // Create the Tank, which fails.
-
-        restTankMockMvc.perform(post("/api/tanks")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(tank)))
-            .andExpect(status().isBadRequest());
-
-        List<Tank> tankList = tankRepository.findAll();
-        assertThat(tankList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllTanks() throws Exception {
         // Initialize the database
         tankRepository.saveAndFlush(tank);
@@ -220,7 +207,8 @@ public class TankResourceIntTest {
             .andExpect(jsonPath("$.[*].tankName").value(hasItem(DEFAULT_TANK_NAME.toString())))
             .andExpect(jsonPath("$.[*].tankType").value(hasItem(DEFAULT_TANK_TYPE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -237,7 +225,8 @@ public class TankResourceIntTest {
             .andExpect(jsonPath("$.tankName").value(DEFAULT_TANK_NAME.toString()))
             .andExpect(jsonPath("$.tankType").value(DEFAULT_TANK_TYPE.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -262,7 +251,8 @@ public class TankResourceIntTest {
             .tankName(UPDATED_TANK_NAME)
             .tankType(UPDATED_TANK_TYPE)
             .description(UPDATED_DESCRIPTION)
-            .timestamp(UPDATED_TIMESTAMP);
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restTankMockMvc.perform(put("/api/tanks")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -277,6 +267,7 @@ public class TankResourceIntTest {
         assertThat(testTank.getTankType()).isEqualTo(UPDATED_TANK_TYPE);
         assertThat(testTank.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTank.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testTank.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the Tank in Elasticsearch
         Tank tankEs = tankSearchRepository.findOne(testTank.getId());
@@ -337,7 +328,8 @@ public class TankResourceIntTest {
             .andExpect(jsonPath("$.[*].tankName").value(hasItem(DEFAULT_TANK_NAME.toString())))
             .andExpect(jsonPath("$.[*].tankType").value(hasItem(DEFAULT_TANK_TYPE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

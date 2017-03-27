@@ -23,6 +23,10 @@
         {
             "fieldName": "timestamp",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20170326000434",
@@ -30,5 +34,7 @@
     "dto": "no",
     "pagination": "pagination",
     "service": "serviceImpl",
+    "microserviceName": "pondNotes",
+    "searchEngine": "elasticsearch",
     "angularJSSuffix": "notes"
 }

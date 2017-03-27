@@ -65,6 +65,9 @@ public class ChemicalAnalysisResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private ChemicalAnalysisRepository chemicalAnalysisRepository;
 
@@ -114,7 +117,8 @@ public class ChemicalAnalysisResourceIntTest {
             .nH4(DEFAULT_N_H_4)
             .ph(DEFAULT_PH)
             .tempVal(DEFAULT_TEMP_VAL)
-            .timestamp(DEFAULT_TIMESTAMP);
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return chemicalAnalysis;
     }
 
@@ -146,6 +150,7 @@ public class ChemicalAnalysisResourceIntTest {
         assertThat(testChemicalAnalysis.getPh()).isEqualTo(DEFAULT_PH);
         assertThat(testChemicalAnalysis.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testChemicalAnalysis.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testChemicalAnalysis.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the ChemicalAnalysis in Elasticsearch
         ChemicalAnalysis chemicalAnalysisEs = chemicalAnalysisSearchRepository.findOne(testChemicalAnalysis.getId());
@@ -224,7 +229,8 @@ public class ChemicalAnalysisResourceIntTest {
             .andExpect(jsonPath("$.[*].nH4").value(hasItem(DEFAULT_N_H_4.toString())))
             .andExpect(jsonPath("$.[*].ph").value(hasItem(DEFAULT_PH.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -244,7 +250,8 @@ public class ChemicalAnalysisResourceIntTest {
             .andExpect(jsonPath("$.nH4").value(DEFAULT_N_H_4.toString()))
             .andExpect(jsonPath("$.ph").value(DEFAULT_PH.toString()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -272,7 +279,8 @@ public class ChemicalAnalysisResourceIntTest {
             .nH4(UPDATED_N_H_4)
             .ph(UPDATED_PH)
             .tempVal(UPDATED_TEMP_VAL)
-            .timestamp(UPDATED_TIMESTAMP);
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restChemicalAnalysisMockMvc.perform(put("/api/chemical-analyses")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -290,6 +298,7 @@ public class ChemicalAnalysisResourceIntTest {
         assertThat(testChemicalAnalysis.getPh()).isEqualTo(UPDATED_PH);
         assertThat(testChemicalAnalysis.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testChemicalAnalysis.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testChemicalAnalysis.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the ChemicalAnalysis in Elasticsearch
         ChemicalAnalysis chemicalAnalysisEs = chemicalAnalysisSearchRepository.findOne(testChemicalAnalysis.getId());
@@ -353,7 +362,8 @@ public class ChemicalAnalysisResourceIntTest {
             .andExpect(jsonPath("$.[*].nH4").value(hasItem(DEFAULT_N_H_4.toString())))
             .andExpect(jsonPath("$.[*].ph").value(hasItem(DEFAULT_PH.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

@@ -63,6 +63,9 @@ public class LiveStockResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private LiveStockRepository liveStockRepository;
 
@@ -111,7 +114,8 @@ public class LiveStockResourceIntTest {
             .description(DEFAULT_DESCRIPTION)
             .qty(DEFAULT_QTY)
             .tempVal(DEFAULT_TEMP_VAL)
-            .timestamp(DEFAULT_TIMESTAMP);
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return liveStock;
     }
 
@@ -142,6 +146,7 @@ public class LiveStockResourceIntTest {
         assertThat(testLiveStock.getQty()).isEqualTo(DEFAULT_QTY);
         assertThat(testLiveStock.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testLiveStock.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testLiveStock.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the LiveStock in Elasticsearch
         LiveStock liveStockEs = liveStockSearchRepository.findOne(testLiveStock.getId());
@@ -237,7 +242,8 @@ public class LiveStockResourceIntTest {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -256,7 +262,8 @@ public class LiveStockResourceIntTest {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.qty").value(DEFAULT_QTY))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -283,7 +290,8 @@ public class LiveStockResourceIntTest {
             .description(UPDATED_DESCRIPTION)
             .qty(UPDATED_QTY)
             .tempVal(UPDATED_TEMP_VAL)
-            .timestamp(UPDATED_TIMESTAMP);
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restLiveStockMockMvc.perform(put("/api/live-stocks")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -300,6 +308,7 @@ public class LiveStockResourceIntTest {
         assertThat(testLiveStock.getQty()).isEqualTo(UPDATED_QTY);
         assertThat(testLiveStock.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testLiveStock.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testLiveStock.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the LiveStock in Elasticsearch
         LiveStock liveStockEs = liveStockSearchRepository.findOne(testLiveStock.getId());
@@ -362,7 +371,8 @@ public class LiveStockResourceIntTest {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

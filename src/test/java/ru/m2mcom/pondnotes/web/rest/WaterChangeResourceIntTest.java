@@ -62,6 +62,9 @@ public class WaterChangeResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private WaterChangeRepository waterChangeRepository;
 
@@ -110,7 +113,8 @@ public class WaterChangeResourceIntTest {
             .readingBefore(DEFAULT_READING_BEFORE)
             .readingAfter(DEFAULT_READING_AFTER)
             .tempVal(DEFAULT_TEMP_VAL)
-            .timestamp(DEFAULT_TIMESTAMP);
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return waterChange;
     }
 
@@ -141,6 +145,7 @@ public class WaterChangeResourceIntTest {
         assertThat(testWaterChange.getReadingAfter()).isEqualTo(DEFAULT_READING_AFTER);
         assertThat(testWaterChange.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testWaterChange.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testWaterChange.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the WaterChange in Elasticsearch
         WaterChange waterChangeEs = waterChangeSearchRepository.findOne(testWaterChange.getId());
@@ -254,7 +259,8 @@ public class WaterChangeResourceIntTest {
             .andExpect(jsonPath("$.[*].readingBefore").value(hasItem(DEFAULT_READING_BEFORE.doubleValue())))
             .andExpect(jsonPath("$.[*].readingAfter").value(hasItem(DEFAULT_READING_AFTER.doubleValue())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -273,7 +279,8 @@ public class WaterChangeResourceIntTest {
             .andExpect(jsonPath("$.readingBefore").value(DEFAULT_READING_BEFORE.doubleValue()))
             .andExpect(jsonPath("$.readingAfter").value(DEFAULT_READING_AFTER.doubleValue()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -300,7 +307,8 @@ public class WaterChangeResourceIntTest {
             .readingBefore(UPDATED_READING_BEFORE)
             .readingAfter(UPDATED_READING_AFTER)
             .tempVal(UPDATED_TEMP_VAL)
-            .timestamp(UPDATED_TIMESTAMP);
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restWaterChangeMockMvc.perform(put("/api/water-changes")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -317,6 +325,7 @@ public class WaterChangeResourceIntTest {
         assertThat(testWaterChange.getReadingAfter()).isEqualTo(UPDATED_READING_AFTER);
         assertThat(testWaterChange.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testWaterChange.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testWaterChange.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the WaterChange in Elasticsearch
         WaterChange waterChangeEs = waterChangeSearchRepository.findOne(testWaterChange.getId());
@@ -379,7 +388,8 @@ public class WaterChangeResourceIntTest {
             .andExpect(jsonPath("$.[*].readingBefore").value(hasItem(DEFAULT_READING_BEFORE.doubleValue())))
             .andExpect(jsonPath("$.[*].readingAfter").value(hasItem(DEFAULT_READING_AFTER.doubleValue())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

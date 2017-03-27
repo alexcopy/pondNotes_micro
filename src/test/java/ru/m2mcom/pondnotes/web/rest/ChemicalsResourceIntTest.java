@@ -59,6 +59,9 @@ public class ChemicalsResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private ChemicalsRepository chemicalsRepository;
 
@@ -106,7 +109,8 @@ public class ChemicalsResourceIntTest {
             .qty(DEFAULT_QTY)
             .reason(DEFAULT_REASON)
             .tempVal(DEFAULT_TEMP_VAL)
-            .timestamp(DEFAULT_TIMESTAMP);
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return chemicals;
     }
 
@@ -136,6 +140,7 @@ public class ChemicalsResourceIntTest {
         assertThat(testChemicals.getReason()).isEqualTo(DEFAULT_REASON);
         assertThat(testChemicals.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testChemicals.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testChemicals.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the Chemicals in Elasticsearch
         Chemicals chemicalsEs = chemicalsSearchRepository.findOne(testChemicals.getId());
@@ -212,7 +217,8 @@ public class ChemicalsResourceIntTest {
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
             .andExpect(jsonPath("$.[*].reason").value(hasItem(DEFAULT_REASON.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -230,7 +236,8 @@ public class ChemicalsResourceIntTest {
             .andExpect(jsonPath("$.qty").value(DEFAULT_QTY))
             .andExpect(jsonPath("$.reason").value(DEFAULT_REASON.toString()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -256,7 +263,8 @@ public class ChemicalsResourceIntTest {
             .qty(UPDATED_QTY)
             .reason(UPDATED_REASON)
             .tempVal(UPDATED_TEMP_VAL)
-            .timestamp(UPDATED_TIMESTAMP);
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restChemicalsMockMvc.perform(put("/api/chemicals")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -272,6 +280,7 @@ public class ChemicalsResourceIntTest {
         assertThat(testChemicals.getReason()).isEqualTo(UPDATED_REASON);
         assertThat(testChemicals.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testChemicals.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testChemicals.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the Chemicals in Elasticsearch
         Chemicals chemicalsEs = chemicalsSearchRepository.findOne(testChemicals.getId());
@@ -333,7 +342,8 @@ public class ChemicalsResourceIntTest {
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
             .andExpect(jsonPath("$.[*].reason").value(hasItem(DEFAULT_REASON.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

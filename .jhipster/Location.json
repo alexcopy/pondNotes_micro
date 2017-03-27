@@ -17,6 +17,14 @@
         {
             "fieldName": "county",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20170326000434",
@@ -24,5 +32,7 @@
     "dto": "no",
     "pagination": "no",
     "service": "serviceImpl",
+    "microserviceName": "pondNotes",
+    "searchEngine": "elasticsearch",
     "angularJSSuffix": "notes"
 }

@@ -53,6 +53,9 @@ public class TempMeterResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private TempMeterRepository tempMeterRepository;
 
@@ -98,7 +101,8 @@ public class TempMeterResourceIntTest {
         TempMeter tempMeter = new TempMeter()
             .readingDate(DEFAULT_READING_DATE)
             .tempVal(DEFAULT_TEMP_VAL)
-            .timestamp(DEFAULT_TIMESTAMP);
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return tempMeter;
     }
 
@@ -126,6 +130,7 @@ public class TempMeterResourceIntTest {
         assertThat(testTempMeter.getReadingDate()).isEqualTo(DEFAULT_READING_DATE);
         assertThat(testTempMeter.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testTempMeter.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testTempMeter.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the TempMeter in Elasticsearch
         TempMeter tempMeterEs = tempMeterSearchRepository.findOne(testTempMeter.getId());
@@ -171,24 +176,6 @@ public class TempMeterResourceIntTest {
 
     @Test
     @Transactional
-    public void checkTimestampIsRequired() throws Exception {
-        int databaseSizeBeforeTest = tempMeterRepository.findAll().size();
-        // set the field null
-        tempMeter.setTimestamp(null);
-
-        // Create the TempMeter, which fails.
-
-        restTempMeterMockMvc.perform(post("/api/temp-meters")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(tempMeter)))
-            .andExpect(status().isBadRequest());
-
-        List<TempMeter> tempMeterList = tempMeterRepository.findAll();
-        assertThat(tempMeterList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllTempMeters() throws Exception {
         // Initialize the database
         tempMeterRepository.saveAndFlush(tempMeter);
@@ -200,7 +187,8 @@ public class TempMeterResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(tempMeter.getId().intValue())))
             .andExpect(jsonPath("$.[*].readingDate").value(hasItem(sameInstant(DEFAULT_READING_DATE))))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -216,7 +204,8 @@ public class TempMeterResourceIntTest {
             .andExpect(jsonPath("$.id").value(tempMeter.getId().intValue()))
             .andExpect(jsonPath("$.readingDate").value(sameInstant(DEFAULT_READING_DATE)))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -240,7 +229,8 @@ public class TempMeterResourceIntTest {
         updatedTempMeter
             .readingDate(UPDATED_READING_DATE)
             .tempVal(UPDATED_TEMP_VAL)
-            .timestamp(UPDATED_TIMESTAMP);
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restTempMeterMockMvc.perform(put("/api/temp-meters")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -254,6 +244,7 @@ public class TempMeterResourceIntTest {
         assertThat(testTempMeter.getReadingDate()).isEqualTo(UPDATED_READING_DATE);
         assertThat(testTempMeter.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testTempMeter.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testTempMeter.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the TempMeter in Elasticsearch
         TempMeter tempMeterEs = tempMeterSearchRepository.findOne(testTempMeter.getId());
@@ -313,7 +304,8 @@ public class TempMeterResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(tempMeter.getId().intValue())))
             .andExpect(jsonPath("$.[*].readingDate").value(hasItem(sameInstant(DEFAULT_READING_DATE))))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

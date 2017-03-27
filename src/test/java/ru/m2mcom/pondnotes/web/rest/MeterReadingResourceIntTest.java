@@ -56,6 +56,12 @@ public class MeterReadingResourceIntTest {
     private static final Double DEFAULT_TEMP_VAL = 1D;
     private static final Double UPDATED_TEMP_VAL = 2D;
 
+    private static final Integer DEFAULT_TIMESTAMP = 1;
+    private static final Integer UPDATED_TIMESTAMP = 2;
+
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private MeterReadingRepository meterReadingRepository;
 
@@ -102,7 +108,9 @@ public class MeterReadingResourceIntTest {
             .readingDate(DEFAULT_READING_DATE)
             .description(DEFAULT_DESCRIPTION)
             .reading(DEFAULT_READING)
-            .tempVal(DEFAULT_TEMP_VAL);
+            .tempVal(DEFAULT_TEMP_VAL)
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return meterReading;
     }
 
@@ -131,6 +139,8 @@ public class MeterReadingResourceIntTest {
         assertThat(testMeterReading.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testMeterReading.getReading()).isEqualTo(DEFAULT_READING);
         assertThat(testMeterReading.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
+        assertThat(testMeterReading.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testMeterReading.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the MeterReading in Elasticsearch
         MeterReading meterReadingEs = meterReadingSearchRepository.findOne(testMeterReading.getId());
@@ -224,7 +234,9 @@ public class MeterReadingResourceIntTest {
             .andExpect(jsonPath("$.[*].readingDate").value(hasItem(sameInstant(DEFAULT_READING_DATE))))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].reading").value(hasItem(DEFAULT_READING.doubleValue())))
-            .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())));
+            .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -241,7 +253,9 @@ public class MeterReadingResourceIntTest {
             .andExpect(jsonPath("$.readingDate").value(sameInstant(DEFAULT_READING_DATE)))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.reading").value(DEFAULT_READING.doubleValue()))
-            .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()));
+            .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -266,7 +280,9 @@ public class MeterReadingResourceIntTest {
             .readingDate(UPDATED_READING_DATE)
             .description(UPDATED_DESCRIPTION)
             .reading(UPDATED_READING)
-            .tempVal(UPDATED_TEMP_VAL);
+            .tempVal(UPDATED_TEMP_VAL)
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restMeterReadingMockMvc.perform(put("/api/meter-readings")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -281,6 +297,8 @@ public class MeterReadingResourceIntTest {
         assertThat(testMeterReading.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testMeterReading.getReading()).isEqualTo(UPDATED_READING);
         assertThat(testMeterReading.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
+        assertThat(testMeterReading.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testMeterReading.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the MeterReading in Elasticsearch
         MeterReading meterReadingEs = meterReadingSearchRepository.findOne(testMeterReading.getId());
@@ -341,7 +359,9 @@ public class MeterReadingResourceIntTest {
             .andExpect(jsonPath("$.[*].readingDate").value(hasItem(sameInstant(DEFAULT_READING_DATE))))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].reading").value(hasItem(DEFAULT_READING.doubleValue())))
-            .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())));
+            .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

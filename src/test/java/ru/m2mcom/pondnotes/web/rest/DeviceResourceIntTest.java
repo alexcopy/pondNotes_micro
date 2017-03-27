@@ -52,6 +52,9 @@ public class DeviceResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private DeviceRepository deviceRepository;
 
@@ -98,7 +101,8 @@ public class DeviceResourceIntTest {
             .deviceName(DEFAULT_DEVICE_NAME)
             .deviceType(DEFAULT_DEVICE_TYPE)
             .description(DEFAULT_DESCRIPTION)
-            .timestamp(DEFAULT_TIMESTAMP);
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return device;
     }
 
@@ -127,6 +131,7 @@ public class DeviceResourceIntTest {
         assertThat(testDevice.getDeviceType()).isEqualTo(DEFAULT_DEVICE_TYPE);
         assertThat(testDevice.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testDevice.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testDevice.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the Device in Elasticsearch
         Device deviceEs = deviceSearchRepository.findOne(testDevice.getId());
@@ -208,24 +213,6 @@ public class DeviceResourceIntTest {
 
     @Test
     @Transactional
-    public void checkTimestampIsRequired() throws Exception {
-        int databaseSizeBeforeTest = deviceRepository.findAll().size();
-        // set the field null
-        device.setTimestamp(null);
-
-        // Create the Device, which fails.
-
-        restDeviceMockMvc.perform(post("/api/devices")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(device)))
-            .andExpect(status().isBadRequest());
-
-        List<Device> deviceList = deviceRepository.findAll();
-        assertThat(deviceList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllDevices() throws Exception {
         // Initialize the database
         deviceRepository.saveAndFlush(device);
@@ -238,7 +225,8 @@ public class DeviceResourceIntTest {
             .andExpect(jsonPath("$.[*].deviceName").value(hasItem(DEFAULT_DEVICE_NAME.toString())))
             .andExpect(jsonPath("$.[*].deviceType").value(hasItem(DEFAULT_DEVICE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -255,7 +243,8 @@ public class DeviceResourceIntTest {
             .andExpect(jsonPath("$.deviceName").value(DEFAULT_DEVICE_NAME.toString()))
             .andExpect(jsonPath("$.deviceType").value(DEFAULT_DEVICE_TYPE.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -280,7 +269,8 @@ public class DeviceResourceIntTest {
             .deviceName(UPDATED_DEVICE_NAME)
             .deviceType(UPDATED_DEVICE_TYPE)
             .description(UPDATED_DESCRIPTION)
-            .timestamp(UPDATED_TIMESTAMP);
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restDeviceMockMvc.perform(put("/api/devices")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -295,6 +285,7 @@ public class DeviceResourceIntTest {
         assertThat(testDevice.getDeviceType()).isEqualTo(UPDATED_DEVICE_TYPE);
         assertThat(testDevice.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testDevice.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testDevice.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the Device in Elasticsearch
         Device deviceEs = deviceSearchRepository.findOne(testDevice.getId());
@@ -355,7 +346,8 @@ public class DeviceResourceIntTest {
             .andExpect(jsonPath("$.[*].deviceName").value(hasItem(DEFAULT_DEVICE_NAME.toString())))
             .andExpect(jsonPath("$.[*].deviceType").value(hasItem(DEFAULT_DEVICE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

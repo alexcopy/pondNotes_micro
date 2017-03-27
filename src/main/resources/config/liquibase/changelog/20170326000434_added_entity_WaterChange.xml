@@ -46,6 +46,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="user_id" type="integer">
+                <constraints nullable="true" />
+            </column>
+
             <column name="tank_id" type="bigint">
                 <constraints nullable="true" />
             </column>

@@ -42,6 +42,9 @@ public class Chemicals implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
+    @Column(name = "user_id")
+    private Integer userId;
+
     public Long getId() {
         return id;
     }
@@ -115,6 +118,19 @@ public class Chemicals implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public Chemicals userId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -144,6 +160,7 @@ public class Chemicals implements Serializable {
             ", reason='" + reason + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", userId='" + userId + "'" +
             '}';
     }
 }

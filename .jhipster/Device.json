@@ -33,10 +33,11 @@
         },
         {
             "fieldName": "timestamp",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20170326000434",
@@ -44,5 +45,7 @@
     "dto": "no",
     "pagination": "infinite-scroll",
     "service": "serviceImpl",
+    "microserviceName": "pondNotes",
+    "searchEngine": "elasticsearch",
     "angularJSSuffix": "notes"
 }

@@ -5,14 +5,17 @@ entity Location {
 	streetAddress String,
 	postalCode String,
 	city String,
-	county String
+	county String,
+	timestamp Integer,
+	userId Integer
 }
 
 entity Tank {
 	tankName String required,
     tankType TankType required,
     description String,
-    timestamp Integer required
+    timestamp Integer,
+    userId Integer
 }
 
 enum TankType {
@@ -23,7 +26,8 @@ entity Device {
 	deviceName String required,
     deviceType DeviceType required,
     description String required,
-    timestamp Integer required
+    timestamp Integer,
+    userId Integer
 }
 
 enum DeviceType {
@@ -33,21 +37,25 @@ enum DeviceType {
 entity TempMeter {
     readingDate ZonedDateTime,
 	tempVal   Double required,
-    timestamp Integer required
+    timestamp Integer,
+    userId Integer
 }
- 
+
 entity MeterReading {
 	readingDate ZonedDateTime required,
 	description String,
 	reading Double required,
-	tempVal Double required
+	tempVal Double required,
+	timestamp Integer,
+	userId Integer
 }
- 
+
  entity FilterPumpCleaning {
 	cleaningDate ZonedDateTime required,
 	description String,
     tempVal Double required,
     timestamp Integer,
+    userId Integer
 }
 
  entity WaterChange {
@@ -57,6 +65,7 @@ entity MeterReading {
     readingAfter Double required,
     tempVal Double required,
     timestamp Integer,
+    userId Integer
 }
 
  entity LiveStock {
@@ -66,6 +75,7 @@ entity MeterReading {
     qty Integer required,
     tempVal Double required,
     timestamp Integer,
+    userId Integer
 }
 
  entity ChemicalAnalysis {
@@ -76,14 +86,16 @@ entity MeterReading {
     ph String,
     tempVal Double required,
     timestamp Integer,
+    userId Integer
 }
- 
+
   entity Chemicals {
 	date ZonedDateTime required,
 	qty Integer,
     reason String,
     tempVal Double required,
     timestamp Integer,
+    userId Integer
 }
 
   entity OtherWorks {
@@ -93,12 +105,18 @@ entity MeterReading {
     descripton String,
     tempVal Double required,
     timestamp Integer,
+    userId Integer
 }
- 
- 
+
+
 enum StockCase {
     ADDED, REMOVED, DIED, HERON, OTHER
 }
+
+microservice * with pondNotes
+search * with elasticsearch
+
+
 /**
 relationship ManyToOne {
    FilterPumpCleaning{device(deviceName)} to Device,
@@ -116,15 +134,17 @@ relationship OneToMany {
    Device{tank(tankName)} to Tank
 }
 relationship ManyToOne {
-   WaterChange{tank(tankName)} to Tank, 
+   WaterChange{tank(tankName)} to Tank,
    LiveStock {tank(tankName)} to Tank,
    Tank{location(streetAddress)} to Location
 }
- 
+
 // Set pagination options
 paginate Device, TempMeter with infinite-scroll
 paginate MeterReading with pagination
 paginate FilterPumpCleaning, ChemicalAnalysis, Chemicals, LiveStock with pagination
+
+
 
 // Set service options to all except few
 service all with serviceImpl

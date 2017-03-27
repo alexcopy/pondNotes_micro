@@ -51,6 +51,12 @@ public class LocationResourceIntTest {
     private static final String DEFAULT_COUNTY = "AAAAAAAAAA";
     private static final String UPDATED_COUNTY = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_TIMESTAMP = 1;
+    private static final Integer UPDATED_TIMESTAMP = 2;
+
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private LocationRepository locationRepository;
 
@@ -97,7 +103,9 @@ public class LocationResourceIntTest {
             .streetAddress(DEFAULT_STREET_ADDRESS)
             .postalCode(DEFAULT_POSTAL_CODE)
             .city(DEFAULT_CITY)
-            .county(DEFAULT_COUNTY);
+            .county(DEFAULT_COUNTY)
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return location;
     }
 
@@ -126,6 +134,8 @@ public class LocationResourceIntTest {
         assertThat(testLocation.getPostalCode()).isEqualTo(DEFAULT_POSTAL_CODE);
         assertThat(testLocation.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testLocation.getCounty()).isEqualTo(DEFAULT_COUNTY);
+        assertThat(testLocation.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testLocation.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the Location in Elasticsearch
         Location locationEs = locationSearchRepository.findOne(testLocation.getId());
@@ -165,7 +175,9 @@ public class LocationResourceIntTest {
             .andExpect(jsonPath("$.[*].streetAddress").value(hasItem(DEFAULT_STREET_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE.toString())))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
-            .andExpect(jsonPath("$.[*].county").value(hasItem(DEFAULT_COUNTY.toString())));
+            .andExpect(jsonPath("$.[*].county").value(hasItem(DEFAULT_COUNTY.toString())))
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -182,7 +194,9 @@ public class LocationResourceIntTest {
             .andExpect(jsonPath("$.streetAddress").value(DEFAULT_STREET_ADDRESS.toString()))
             .andExpect(jsonPath("$.postalCode").value(DEFAULT_POSTAL_CODE.toString()))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY.toString()))
-            .andExpect(jsonPath("$.county").value(DEFAULT_COUNTY.toString()));
+            .andExpect(jsonPath("$.county").value(DEFAULT_COUNTY.toString()))
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -207,7 +221,9 @@ public class LocationResourceIntTest {
             .streetAddress(UPDATED_STREET_ADDRESS)
             .postalCode(UPDATED_POSTAL_CODE)
             .city(UPDATED_CITY)
-            .county(UPDATED_COUNTY);
+            .county(UPDATED_COUNTY)
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restLocationMockMvc.perform(put("/api/locations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -222,6 +238,8 @@ public class LocationResourceIntTest {
         assertThat(testLocation.getPostalCode()).isEqualTo(UPDATED_POSTAL_CODE);
         assertThat(testLocation.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testLocation.getCounty()).isEqualTo(UPDATED_COUNTY);
+        assertThat(testLocation.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testLocation.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the Location in Elasticsearch
         Location locationEs = locationSearchRepository.findOne(testLocation.getId());
@@ -282,7 +300,9 @@ public class LocationResourceIntTest {
             .andExpect(jsonPath("$.[*].streetAddress").value(hasItem(DEFAULT_STREET_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE.toString())))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
-            .andExpect(jsonPath("$.[*].county").value(hasItem(DEFAULT_COUNTY.toString())));
+            .andExpect(jsonPath("$.[*].county").value(hasItem(DEFAULT_COUNTY.toString())))
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

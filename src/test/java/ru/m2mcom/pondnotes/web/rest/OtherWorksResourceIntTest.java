@@ -62,6 +62,9 @@ public class OtherWorksResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final Integer DEFAULT_USER_ID = 1;
+    private static final Integer UPDATED_USER_ID = 2;
+
     @Autowired
     private OtherWorksRepository otherWorksRepository;
 
@@ -110,7 +113,8 @@ public class OtherWorksResourceIntTest {
             .qty(DEFAULT_QTY)
             .descripton(DEFAULT_DESCRIPTON)
             .tempVal(DEFAULT_TEMP_VAL)
-            .timestamp(DEFAULT_TIMESTAMP);
+            .timestamp(DEFAULT_TIMESTAMP)
+            .userId(DEFAULT_USER_ID);
         return otherWorks;
     }
 
@@ -141,6 +145,7 @@ public class OtherWorksResourceIntTest {
         assertThat(testOtherWorks.getDescripton()).isEqualTo(DEFAULT_DESCRIPTON);
         assertThat(testOtherWorks.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testOtherWorks.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testOtherWorks.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the OtherWorks in Elasticsearch
         OtherWorks otherWorksEs = otherWorksSearchRepository.findOne(testOtherWorks.getId());
@@ -218,7 +223,8 @@ public class OtherWorksResourceIntTest {
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
             .andExpect(jsonPath("$.[*].descripton").value(hasItem(DEFAULT_DESCRIPTON.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test
@@ -237,7 +243,8 @@ public class OtherWorksResourceIntTest {
             .andExpect(jsonPath("$.qty").value(DEFAULT_QTY))
             .andExpect(jsonPath("$.descripton").value(DEFAULT_DESCRIPTON.toString()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
     @Test
@@ -264,7 +271,8 @@ public class OtherWorksResourceIntTest {
             .qty(UPDATED_QTY)
             .descripton(UPDATED_DESCRIPTON)
             .tempVal(UPDATED_TEMP_VAL)
-            .timestamp(UPDATED_TIMESTAMP);
+            .timestamp(UPDATED_TIMESTAMP)
+            .userId(UPDATED_USER_ID);
 
         restOtherWorksMockMvc.perform(put("/api/other-works")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -281,6 +289,7 @@ public class OtherWorksResourceIntTest {
         assertThat(testOtherWorks.getDescripton()).isEqualTo(UPDATED_DESCRIPTON);
         assertThat(testOtherWorks.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testOtherWorks.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testOtherWorks.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the OtherWorks in Elasticsearch
         OtherWorks otherWorksEs = otherWorksSearchRepository.findOne(testOtherWorks.getId());
@@ -343,7 +352,8 @@ public class OtherWorksResourceIntTest {
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
             .andExpect(jsonPath("$.[*].descripton").value(hasItem(DEFAULT_DESCRIPTON.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
     @Test

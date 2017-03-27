@@ -38,9 +38,11 @@ public class Tank implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @NotNull
-    @Column(name = "timestamp", nullable = false)
+    @Column(name = "timestamp")
     private Integer timestamp;
+
+    @Column(name = "user_id")
+    private Integer userId;
 
     @ManyToOne
     private Location location;
@@ -108,6 +110,19 @@ public class Tank implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public Tank userId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Location getLocation() {
         return location;
     }
@@ -162,6 +177,7 @@ public class Tank implements Serializable {
             ", tankType='" + tankType + "'" +
             ", description='" + description + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", userId='" + userId + "'" +
             '}';
     }
 }

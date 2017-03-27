@@ -34,9 +34,11 @@ public class TempMeter implements Serializable {
     @Column(name = "temp_val", nullable = false)
     private Double tempVal;
 
-    @NotNull
-    @Column(name = "timestamp", nullable = false)
+    @Column(name = "timestamp")
     private Integer timestamp;
+
+    @Column(name = "user_id")
+    private Integer userId;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -92,6 +94,19 @@ public class TempMeter implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public TempMeter userId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Set<Tank> getTanks() {
         return tanks;
     }
@@ -142,6 +157,7 @@ public class TempMeter implements Serializable {
             ", readingDate='" + readingDate + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", userId='" + userId + "'" +
             '}';
     }
 }
