@@ -1,0 +1,54 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "tank",
+            "otherEntityName": "tank",
+            "otherEntityField": "tankName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "reason",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qty",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "descripton",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tempVal",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170404150944",
+    "entityTableName": "other_works",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "microserviceName": "pondNotes",
+    "searchEngine": "elasticsearch"
+}

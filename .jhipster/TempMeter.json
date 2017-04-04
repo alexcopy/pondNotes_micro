@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "tank",
+            "otherEntityName": "tank",
+            "otherEntityField": "tankName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "readingDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "tempVal",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170404150944",
+    "entityTableName": "temp_meter",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "microserviceName": "pondNotes",
+    "searchEngine": "elasticsearch"
+}

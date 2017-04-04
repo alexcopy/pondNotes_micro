@@ -1,0 +1,49 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "location",
+            "otherEntityName": "location",
+            "otherEntityField": "streetAddress"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "registereduser",
+            "otherEntityName": "registeredUser",
+            "otherEntityField": "userName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "tankName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tankType",
+            "fieldType": "TankType",
+            "fieldValues": "POND,AQUARIUM,OTHER",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170404150944",
+    "entityTableName": "tank",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "microserviceName": "pondNotes",
+    "searchEngine": "elasticsearch"
+}

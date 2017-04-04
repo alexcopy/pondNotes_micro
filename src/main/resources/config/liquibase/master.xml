@@ -5,6 +5,29 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_MeterReading.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_ChemicalAnalysis.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_Device.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_FilterPumpCleaning.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_LiveStock.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_Location.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_Chemicals.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_OtherWorks.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_RegisteredUser.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_Tank.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_TempMeter.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_WaterChange.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_MeterReading.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_ChemicalAnalysis.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_Device.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_FilterPumpCleaning.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_LiveStock.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_Location.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_Chemicals.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_OtherWorks.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_Tank.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_TempMeter.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170404150944_added_entity_constraints_WaterChange.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

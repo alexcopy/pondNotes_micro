@@ -1,0 +1,17 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "userName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170404150944",
+    "entityTableName": "registered_user",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "microserviceName": "pondNotes",
+    "searchEngine": "elasticsearch"
+}

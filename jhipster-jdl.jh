@@ -138,7 +138,7 @@ paginate Device, TempMeter with infinite-scroll
 paginate MeterReading with pagination
 paginate FilterPumpCleaning, ChemicalAnalysis, Chemicals, LiveStock with pagination
 
-
+dto * with mapstruct
 microservice * with pondNotes
 search * with elasticsearch
 
