@@ -55,14 +55,14 @@ public class OtherWorksResourceIntTest {
     private static final Integer DEFAULT_QTY = 1;
     private static final Integer UPDATED_QTY = 2;
 
+    private static final String DEFAULT_DESCRIPTON = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTON = "BBBBBBBBBB";
+
     private static final Double DEFAULT_TEMP_VAL = 1D;
     private static final Double UPDATED_TEMP_VAL = 2D;
 
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
-
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_USER_ID = 1;
     private static final Integer UPDATED_USER_ID = 2;
@@ -116,9 +116,9 @@ public class OtherWorksResourceIntTest {
             .date(DEFAULT_DATE)
             .reason(DEFAULT_REASON)
             .qty(DEFAULT_QTY)
+            .descripton(DEFAULT_DESCRIPTON)
             .tempVal(DEFAULT_TEMP_VAL)
             .timestamp(DEFAULT_TIMESTAMP)
-            .description(DEFAULT_DESCRIPTION)
             .userId(DEFAULT_USER_ID);
         return otherWorks;
     }
@@ -148,9 +148,9 @@ public class OtherWorksResourceIntTest {
         assertThat(testOtherWorks.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testOtherWorks.getReason()).isEqualTo(DEFAULT_REASON);
         assertThat(testOtherWorks.getQty()).isEqualTo(DEFAULT_QTY);
+        assertThat(testOtherWorks.getDescripton()).isEqualTo(DEFAULT_DESCRIPTON);
         assertThat(testOtherWorks.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testOtherWorks.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
-        assertThat(testOtherWorks.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testOtherWorks.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the OtherWorks in Elasticsearch
@@ -230,9 +230,9 @@ public class OtherWorksResourceIntTest {
             .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
             .andExpect(jsonPath("$.[*].reason").value(hasItem(DEFAULT_REASON.toString())))
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
+            .andExpect(jsonPath("$.[*].descripton").value(hasItem(DEFAULT_DESCRIPTON.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
@@ -250,9 +250,9 @@ public class OtherWorksResourceIntTest {
             .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
             .andExpect(jsonPath("$.reason").value(DEFAULT_REASON.toString()))
             .andExpect(jsonPath("$.qty").value(DEFAULT_QTY))
+            .andExpect(jsonPath("$.descripton").value(DEFAULT_DESCRIPTON.toString()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
@@ -278,9 +278,9 @@ public class OtherWorksResourceIntTest {
             .date(UPDATED_DATE)
             .reason(UPDATED_REASON)
             .qty(UPDATED_QTY)
+            .descripton(UPDATED_DESCRIPTON)
             .tempVal(UPDATED_TEMP_VAL)
             .timestamp(UPDATED_TIMESTAMP)
-            .description(UPDATED_DESCRIPTION)
             .userId(UPDATED_USER_ID);
         OtherWorksDTO otherWorksDTO = otherWorksMapper.otherWorksToOtherWorksDTO(updatedOtherWorks);
 
@@ -296,9 +296,9 @@ public class OtherWorksResourceIntTest {
         assertThat(testOtherWorks.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testOtherWorks.getReason()).isEqualTo(UPDATED_REASON);
         assertThat(testOtherWorks.getQty()).isEqualTo(UPDATED_QTY);
+        assertThat(testOtherWorks.getDescripton()).isEqualTo(UPDATED_DESCRIPTON);
         assertThat(testOtherWorks.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testOtherWorks.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
-        assertThat(testOtherWorks.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testOtherWorks.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the OtherWorks in Elasticsearch
@@ -362,9 +362,9 @@ public class OtherWorksResourceIntTest {
             .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
             .andExpect(jsonPath("$.[*].reason").value(hasItem(DEFAULT_REASON.toString())))
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
+            .andExpect(jsonPath("$.[*].descripton").value(hasItem(DEFAULT_DESCRIPTON.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 

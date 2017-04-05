@@ -37,15 +37,6 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "picture",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "userId",
             "fieldType": "Integer"
         }

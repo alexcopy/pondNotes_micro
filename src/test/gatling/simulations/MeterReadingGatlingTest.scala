@@ -68,7 +68,7 @@ class MeterReadingGatlingTest extends Simulation {
             .exec(http("Create new meterReading")
             .post("/pondnotes/api/meter-readings")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "readingDate":"2020-01-01T00:00:00.000Z", "reading":null, "tempVal":null, "timestamp":"0", "description":"SAMPLE_TEXT", "userId":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "readingDate":"2020-01-01T00:00:00.000Z", "description":"SAMPLE_TEXT", "reading":null, "tempVal":null, "timestamp":"0", "userId":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_meterReading_url"))).exitHereIfFailed
             .pause(10)

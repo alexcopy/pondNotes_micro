@@ -42,9 +42,6 @@ public class Chemicals implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
-    @Column(name = "description")
-    private String description;
-
     @Column(name = "user_id")
     private Integer userId;
 
@@ -121,19 +118,6 @@ public class Chemicals implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Chemicals description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Integer getUserId() {
         return userId;
     }
@@ -176,7 +160,6 @@ public class Chemicals implements Serializable {
             ", reason='" + reason + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
-            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

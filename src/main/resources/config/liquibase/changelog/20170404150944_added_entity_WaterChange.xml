@@ -26,6 +26,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="reading_before" type="double">
                 <constraints nullable="false" />
             </column>
@@ -36,10 +40,6 @@
 
             <column name="temp_val" type="double">
                 <constraints nullable="false" />
-            </column>
-
-            <column name="description" type="varchar(255)">
-                <constraints nullable="true" />
             </column>
 
             <column name="timestamp" type="integer">

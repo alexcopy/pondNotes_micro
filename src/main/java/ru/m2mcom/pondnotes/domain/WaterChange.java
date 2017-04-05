@@ -29,6 +29,9 @@ public class WaterChange implements Serializable {
     @Column(name = "change_date", nullable = false)
     private ZonedDateTime changeDate;
 
+    @Column(name = "description")
+    private String description;
+
     @NotNull
     @Column(name = "reading_before", nullable = false)
     private Double readingBefore;
@@ -40,9 +43,6 @@ public class WaterChange implements Serializable {
     @NotNull
     @Column(name = "temp_val", nullable = false)
     private Double tempVal;
-
-    @Column(name = "description")
-    private String description;
 
     @Column(name = "timestamp")
     private Integer timestamp;
@@ -69,6 +69,19 @@ public class WaterChange implements Serializable {
 
     public void setChangeDate(ZonedDateTime changeDate) {
         this.changeDate = changeDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public WaterChange description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getReadingBefore() {
@@ -108,19 +121,6 @@ public class WaterChange implements Serializable {
 
     public void setTempVal(Double tempVal) {
         this.tempVal = tempVal;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public WaterChange description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Integer getTimestamp() {
@@ -174,10 +174,10 @@ public class WaterChange implements Serializable {
         return "WaterChange{" +
             "id=" + id +
             ", changeDate='" + changeDate + "'" +
+            ", description='" + description + "'" +
             ", readingBefore='" + readingBefore + "'" +
             ", readingAfter='" + readingAfter + "'" +
             ", tempVal='" + tempVal + "'" +
-            ", description='" + description + "'" +
             ", timestamp='" + timestamp + "'" +
             ", userId='" + userId + "'" +
             '}';

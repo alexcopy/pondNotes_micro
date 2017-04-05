@@ -10,6 +10,10 @@
             ]
         },
         {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "tempVal",
             "fieldType": "Double",
             "fieldValidateRules": [
@@ -19,10 +23,6 @@
         {
             "fieldName": "timestamp",
             "fieldType": "Integer"
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
         },
         {
             "fieldName": "userId",

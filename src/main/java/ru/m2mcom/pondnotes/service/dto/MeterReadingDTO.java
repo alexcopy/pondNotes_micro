@@ -16,6 +16,8 @@ public class MeterReadingDTO implements Serializable {
     @NotNull
     private ZonedDateTime readingDate;
 
+    private String description;
+
     @NotNull
     private Double reading;
 
@@ -23,8 +25,6 @@ public class MeterReadingDTO implements Serializable {
     private Double tempVal;
 
     private Integer timestamp;
-
-    private String description;
 
     private Integer userId;
 
@@ -41,6 +41,13 @@ public class MeterReadingDTO implements Serializable {
 
     public void setReadingDate(ZonedDateTime readingDate) {
         this.readingDate = readingDate;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     public Double getReading() {
         return reading;
@@ -62,13 +69,6 @@ public class MeterReadingDTO implements Serializable {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
-    }
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
     public Integer getUserId() {
         return userId;
@@ -104,10 +104,10 @@ public class MeterReadingDTO implements Serializable {
         return "MeterReadingDTO{" +
             "id=" + id +
             ", readingDate='" + readingDate + "'" +
+            ", description='" + description + "'" +
             ", reading='" + reading + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
-            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

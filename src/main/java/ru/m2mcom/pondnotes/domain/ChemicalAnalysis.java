@@ -48,16 +48,6 @@ public class ChemicalAnalysis implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
-    @Lob
-    @Column(name = "picture")
-    private byte[] picture;
-
-    @Column(name = "picture_content_type")
-    private String pictureContentType;
-
-    @Column(name = "description")
-    private String description;
-
     @Column(name = "user_id")
     private Integer userId;
 
@@ -160,45 +150,6 @@ public class ChemicalAnalysis implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public byte[] getPicture() {
-        return picture;
-    }
-
-    public ChemicalAnalysis picture(byte[] picture) {
-        this.picture = picture;
-        return this;
-    }
-
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
-    }
-
-    public String getPictureContentType() {
-        return pictureContentType;
-    }
-
-    public ChemicalAnalysis pictureContentType(String pictureContentType) {
-        this.pictureContentType = pictureContentType;
-        return this;
-    }
-
-    public void setPictureContentType(String pictureContentType) {
-        this.pictureContentType = pictureContentType;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public ChemicalAnalysis description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Integer getUserId() {
         return userId;
     }
@@ -243,9 +194,6 @@ public class ChemicalAnalysis implements Serializable {
             ", ph='" + ph + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
-            ", picture='" + picture + "'" +
-            ", pictureContentType='" + pictureContentType + "'" +
-            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

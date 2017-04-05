@@ -68,7 +68,7 @@ class OtherWorksGatlingTest extends Simulation {
             .exec(http("Create new otherWorks")
             .post("/pondnotes/api/other-works")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "date":"2020-01-01T00:00:00.000Z", "reason":"SAMPLE_TEXT", "qty":"0", "tempVal":null, "timestamp":"0", "description":"SAMPLE_TEXT", "userId":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "date":"2020-01-01T00:00:00.000Z", "reason":"SAMPLE_TEXT", "qty":"0", "descripton":"SAMPLE_TEXT", "tempVal":null, "timestamp":"0", "userId":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_otherWorks_url"))).exitHereIfFailed
             .pause(10)

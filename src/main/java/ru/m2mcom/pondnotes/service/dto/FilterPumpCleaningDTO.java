@@ -16,12 +16,12 @@ public class FilterPumpCleaningDTO implements Serializable {
     @NotNull
     private ZonedDateTime cleaningDate;
 
+    private String description;
+
     @NotNull
     private Double tempVal;
 
     private Integer timestamp;
-
-    private String description;
 
     private Integer userId;
 
@@ -39,6 +39,13 @@ public class FilterPumpCleaningDTO implements Serializable {
     public void setCleaningDate(ZonedDateTime cleaningDate) {
         this.cleaningDate = cleaningDate;
     }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public Double getTempVal() {
         return tempVal;
     }
@@ -52,13 +59,6 @@ public class FilterPumpCleaningDTO implements Serializable {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
-    }
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
     public Integer getUserId() {
         return userId;
@@ -94,9 +94,9 @@ public class FilterPumpCleaningDTO implements Serializable {
         return "FilterPumpCleaningDTO{" +
             "id=" + id +
             ", cleaningDate='" + cleaningDate + "'" +
+            ", description='" + description + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
-            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

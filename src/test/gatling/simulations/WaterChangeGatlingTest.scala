@@ -68,7 +68,7 @@ class WaterChangeGatlingTest extends Simulation {
             .exec(http("Create new waterChange")
             .post("/pondnotes/api/water-changes")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "changeDate":"2020-01-01T00:00:00.000Z", "readingBefore":null, "readingAfter":null, "tempVal":null, "description":"SAMPLE_TEXT", "timestamp":"0", "userId":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "changeDate":"2020-01-01T00:00:00.000Z", "description":"SAMPLE_TEXT", "readingBefore":null, "readingAfter":null, "tempVal":null, "timestamp":"0", "userId":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_waterChange_url"))).exitHereIfFailed
             .pause(10)

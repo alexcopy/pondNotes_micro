@@ -20,12 +20,12 @@ public class OtherWorksDTO implements Serializable {
 
     private Integer qty;
 
+    private String descripton;
+
     @NotNull
     private Double tempVal;
 
     private Integer timestamp;
-
-    private String description;
 
     private Integer userId;
 
@@ -57,6 +57,13 @@ public class OtherWorksDTO implements Serializable {
     public void setQty(Integer qty) {
         this.qty = qty;
     }
+    public String getDescripton() {
+        return descripton;
+    }
+
+    public void setDescripton(String descripton) {
+        this.descripton = descripton;
+    }
     public Double getTempVal() {
         return tempVal;
     }
@@ -70,13 +77,6 @@ public class OtherWorksDTO implements Serializable {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
-    }
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
     public Integer getUserId() {
         return userId;
@@ -114,9 +114,9 @@ public class OtherWorksDTO implements Serializable {
             ", date='" + date + "'" +
             ", reason='" + reason + "'" +
             ", qty='" + qty + "'" +
+            ", descripton='" + descripton + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
-            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

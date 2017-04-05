@@ -49,6 +49,9 @@ public class WaterChangeResourceIntTest {
     private static final ZonedDateTime DEFAULT_CHANGE_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_CHANGE_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
     private static final Double DEFAULT_READING_BEFORE = 1D;
     private static final Double UPDATED_READING_BEFORE = 2D;
 
@@ -57,9 +60,6 @@ public class WaterChangeResourceIntTest {
 
     private static final Double DEFAULT_TEMP_VAL = 1D;
     private static final Double UPDATED_TEMP_VAL = 2D;
-
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
@@ -114,10 +114,10 @@ public class WaterChangeResourceIntTest {
     public static WaterChange createEntity(EntityManager em) {
         WaterChange waterChange = new WaterChange()
             .changeDate(DEFAULT_CHANGE_DATE)
+            .description(DEFAULT_DESCRIPTION)
             .readingBefore(DEFAULT_READING_BEFORE)
             .readingAfter(DEFAULT_READING_AFTER)
             .tempVal(DEFAULT_TEMP_VAL)
-            .description(DEFAULT_DESCRIPTION)
             .timestamp(DEFAULT_TIMESTAMP)
             .userId(DEFAULT_USER_ID);
         return waterChange;
@@ -146,10 +146,10 @@ public class WaterChangeResourceIntTest {
         assertThat(waterChangeList).hasSize(databaseSizeBeforeCreate + 1);
         WaterChange testWaterChange = waterChangeList.get(waterChangeList.size() - 1);
         assertThat(testWaterChange.getChangeDate()).isEqualTo(DEFAULT_CHANGE_DATE);
+        assertThat(testWaterChange.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testWaterChange.getReadingBefore()).isEqualTo(DEFAULT_READING_BEFORE);
         assertThat(testWaterChange.getReadingAfter()).isEqualTo(DEFAULT_READING_AFTER);
         assertThat(testWaterChange.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
-        assertThat(testWaterChange.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testWaterChange.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
         assertThat(testWaterChange.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
@@ -266,10 +266,10 @@ public class WaterChangeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(waterChange.getId().intValue())))
             .andExpect(jsonPath("$.[*].changeDate").value(hasItem(sameInstant(DEFAULT_CHANGE_DATE))))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].readingBefore").value(hasItem(DEFAULT_READING_BEFORE.doubleValue())))
             .andExpect(jsonPath("$.[*].readingAfter").value(hasItem(DEFAULT_READING_AFTER.doubleValue())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
@@ -286,10 +286,10 @@ public class WaterChangeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(waterChange.getId().intValue()))
             .andExpect(jsonPath("$.changeDate").value(sameInstant(DEFAULT_CHANGE_DATE)))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.readingBefore").value(DEFAULT_READING_BEFORE.doubleValue()))
             .andExpect(jsonPath("$.readingAfter").value(DEFAULT_READING_AFTER.doubleValue()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
             .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
@@ -314,10 +314,10 @@ public class WaterChangeResourceIntTest {
         WaterChange updatedWaterChange = waterChangeRepository.findOne(waterChange.getId());
         updatedWaterChange
             .changeDate(UPDATED_CHANGE_DATE)
+            .description(UPDATED_DESCRIPTION)
             .readingBefore(UPDATED_READING_BEFORE)
             .readingAfter(UPDATED_READING_AFTER)
             .tempVal(UPDATED_TEMP_VAL)
-            .description(UPDATED_DESCRIPTION)
             .timestamp(UPDATED_TIMESTAMP)
             .userId(UPDATED_USER_ID);
         WaterChangeDTO waterChangeDTO = waterChangeMapper.waterChangeToWaterChangeDTO(updatedWaterChange);
@@ -332,10 +332,10 @@ public class WaterChangeResourceIntTest {
         assertThat(waterChangeList).hasSize(databaseSizeBeforeUpdate);
         WaterChange testWaterChange = waterChangeList.get(waterChangeList.size() - 1);
         assertThat(testWaterChange.getChangeDate()).isEqualTo(UPDATED_CHANGE_DATE);
+        assertThat(testWaterChange.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testWaterChange.getReadingBefore()).isEqualTo(UPDATED_READING_BEFORE);
         assertThat(testWaterChange.getReadingAfter()).isEqualTo(UPDATED_READING_AFTER);
         assertThat(testWaterChange.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
-        assertThat(testWaterChange.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testWaterChange.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
         assertThat(testWaterChange.getUserId()).isEqualTo(UPDATED_USER_ID);
 
@@ -398,10 +398,10 @@ public class WaterChangeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(waterChange.getId().intValue())))
             .andExpect(jsonPath("$.[*].changeDate").value(hasItem(sameInstant(DEFAULT_CHANGE_DATE))))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].readingBefore").value(hasItem(DEFAULT_READING_BEFORE.doubleValue())))
             .andExpect(jsonPath("$.[*].readingAfter").value(hasItem(DEFAULT_READING_AFTER.doubleValue())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }

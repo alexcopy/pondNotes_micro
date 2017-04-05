@@ -49,14 +49,14 @@ public class FilterPumpCleaningResourceIntTest {
     private static final ZonedDateTime DEFAULT_CLEANING_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_CLEANING_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
     private static final Double DEFAULT_TEMP_VAL = 1D;
     private static final Double UPDATED_TEMP_VAL = 2D;
 
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
-
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_USER_ID = 1;
     private static final Integer UPDATED_USER_ID = 2;
@@ -108,9 +108,9 @@ public class FilterPumpCleaningResourceIntTest {
     public static FilterPumpCleaning createEntity(EntityManager em) {
         FilterPumpCleaning filterPumpCleaning = new FilterPumpCleaning()
             .cleaningDate(DEFAULT_CLEANING_DATE)
+            .description(DEFAULT_DESCRIPTION)
             .tempVal(DEFAULT_TEMP_VAL)
             .timestamp(DEFAULT_TIMESTAMP)
-            .description(DEFAULT_DESCRIPTION)
             .userId(DEFAULT_USER_ID);
         return filterPumpCleaning;
     }
@@ -138,9 +138,9 @@ public class FilterPumpCleaningResourceIntTest {
         assertThat(filterPumpCleaningList).hasSize(databaseSizeBeforeCreate + 1);
         FilterPumpCleaning testFilterPumpCleaning = filterPumpCleaningList.get(filterPumpCleaningList.size() - 1);
         assertThat(testFilterPumpCleaning.getCleaningDate()).isEqualTo(DEFAULT_CLEANING_DATE);
+        assertThat(testFilterPumpCleaning.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testFilterPumpCleaning.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testFilterPumpCleaning.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
-        assertThat(testFilterPumpCleaning.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testFilterPumpCleaning.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the FilterPumpCleaning in Elasticsearch
@@ -218,9 +218,9 @@ public class FilterPumpCleaningResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(filterPumpCleaning.getId().intValue())))
             .andExpect(jsonPath("$.[*].cleaningDate").value(hasItem(sameInstant(DEFAULT_CLEANING_DATE))))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
@@ -236,9 +236,9 @@ public class FilterPumpCleaningResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(filterPumpCleaning.getId().intValue()))
             .andExpect(jsonPath("$.cleaningDate").value(sameInstant(DEFAULT_CLEANING_DATE)))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
@@ -262,9 +262,9 @@ public class FilterPumpCleaningResourceIntTest {
         FilterPumpCleaning updatedFilterPumpCleaning = filterPumpCleaningRepository.findOne(filterPumpCleaning.getId());
         updatedFilterPumpCleaning
             .cleaningDate(UPDATED_CLEANING_DATE)
+            .description(UPDATED_DESCRIPTION)
             .tempVal(UPDATED_TEMP_VAL)
             .timestamp(UPDATED_TIMESTAMP)
-            .description(UPDATED_DESCRIPTION)
             .userId(UPDATED_USER_ID);
         FilterPumpCleaningDTO filterPumpCleaningDTO = filterPumpCleaningMapper.filterPumpCleaningToFilterPumpCleaningDTO(updatedFilterPumpCleaning);
 
@@ -278,9 +278,9 @@ public class FilterPumpCleaningResourceIntTest {
         assertThat(filterPumpCleaningList).hasSize(databaseSizeBeforeUpdate);
         FilterPumpCleaning testFilterPumpCleaning = filterPumpCleaningList.get(filterPumpCleaningList.size() - 1);
         assertThat(testFilterPumpCleaning.getCleaningDate()).isEqualTo(UPDATED_CLEANING_DATE);
+        assertThat(testFilterPumpCleaning.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testFilterPumpCleaning.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testFilterPumpCleaning.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
-        assertThat(testFilterPumpCleaning.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testFilterPumpCleaning.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the FilterPumpCleaning in Elasticsearch
@@ -342,9 +342,9 @@ public class FilterPumpCleaningResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(filterPumpCleaning.getId().intValue())))
             .andExpect(jsonPath("$.[*].cleaningDate").value(hasItem(sameInstant(DEFAULT_CLEANING_DATE))))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 

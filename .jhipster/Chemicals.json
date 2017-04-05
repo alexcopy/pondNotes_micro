@@ -29,10 +29,6 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "description",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "userId",
             "fieldType": "Integer"
         }

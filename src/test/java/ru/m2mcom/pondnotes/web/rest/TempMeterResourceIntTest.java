@@ -52,9 +52,6 @@ public class TempMeterResourceIntTest {
     private static final Double DEFAULT_TEMP_VAL = 1D;
     private static final Double UPDATED_TEMP_VAL = 2D;
 
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
-
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
@@ -109,7 +106,6 @@ public class TempMeterResourceIntTest {
         TempMeter tempMeter = new TempMeter()
             .readingDate(DEFAULT_READING_DATE)
             .tempVal(DEFAULT_TEMP_VAL)
-            .description(DEFAULT_DESCRIPTION)
             .timestamp(DEFAULT_TIMESTAMP)
             .userId(DEFAULT_USER_ID);
         return tempMeter;
@@ -139,7 +135,6 @@ public class TempMeterResourceIntTest {
         TempMeter testTempMeter = tempMeterList.get(tempMeterList.size() - 1);
         assertThat(testTempMeter.getReadingDate()).isEqualTo(DEFAULT_READING_DATE);
         assertThat(testTempMeter.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
-        assertThat(testTempMeter.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTempMeter.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
         assertThat(testTempMeter.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
@@ -200,7 +195,6 @@ public class TempMeterResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(tempMeter.getId().intValue())))
             .andExpect(jsonPath("$.[*].readingDate").value(hasItem(sameInstant(DEFAULT_READING_DATE))))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
@@ -218,7 +212,6 @@ public class TempMeterResourceIntTest {
             .andExpect(jsonPath("$.id").value(tempMeter.getId().intValue()))
             .andExpect(jsonPath("$.readingDate").value(sameInstant(DEFAULT_READING_DATE)))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
             .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
@@ -244,7 +237,6 @@ public class TempMeterResourceIntTest {
         updatedTempMeter
             .readingDate(UPDATED_READING_DATE)
             .tempVal(UPDATED_TEMP_VAL)
-            .description(UPDATED_DESCRIPTION)
             .timestamp(UPDATED_TIMESTAMP)
             .userId(UPDATED_USER_ID);
         TempMeterDTO tempMeterDTO = tempMeterMapper.tempMeterToTempMeterDTO(updatedTempMeter);
@@ -260,7 +252,6 @@ public class TempMeterResourceIntTest {
         TempMeter testTempMeter = tempMeterList.get(tempMeterList.size() - 1);
         assertThat(testTempMeter.getReadingDate()).isEqualTo(UPDATED_READING_DATE);
         assertThat(testTempMeter.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
-        assertThat(testTempMeter.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTempMeter.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
         assertThat(testTempMeter.getUserId()).isEqualTo(UPDATED_USER_ID);
 
@@ -324,7 +315,6 @@ public class TempMeterResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(tempMeter.getId().intValue())))
             .andExpect(jsonPath("$.[*].readingDate").value(hasItem(sameInstant(DEFAULT_READING_DATE))))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }

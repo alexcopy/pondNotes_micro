@@ -1,7 +1,6 @@
 package ru.m2mcom.pondnotes.service.dto;
 
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,15 +11,12 @@ public class LocationDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
     private String streetAddress;
 
     private String postalCode;
 
-    @NotNull
     private String city;
 
-    @NotNull
     private String county;
 
     private Integer timestamp;

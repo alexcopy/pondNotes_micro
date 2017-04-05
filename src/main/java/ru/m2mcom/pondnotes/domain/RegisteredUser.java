@@ -26,9 +26,6 @@ public class RegisteredUser implements Serializable {
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "description")
-    private String description;
-
     public Long getId() {
         return id;
     }
@@ -48,19 +45,6 @@ public class RegisteredUser implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public RegisteredUser description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     @Override
@@ -88,7 +72,6 @@ public class RegisteredUser implements Serializable {
         return "RegisteredUser{" +
             "id=" + id +
             ", userName='" + userName + "'" +
-            ", description='" + description + "'" +
             '}';
     }
 }

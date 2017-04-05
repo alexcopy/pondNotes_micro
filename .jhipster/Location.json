@@ -4,10 +4,7 @@
     "fields": [
         {
             "fieldName": "streetAddress",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
         },
         {
             "fieldName": "postalCode",
@@ -15,17 +12,11 @@
         },
         {
             "fieldName": "city",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
         },
         {
             "fieldName": "county",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
         },
         {
             "fieldName": "timestamp",

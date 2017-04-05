@@ -68,7 +68,7 @@ class ChemicalAnalysisGatlingTest extends Simulation {
             .exec(http("Create new chemicalAnalysis")
             .post("/pondnotes/api/chemical-analyses")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "date":"2020-01-01T00:00:00.000Z", "nO2":"SAMPLE_TEXT", "nO3":"SAMPLE_TEXT", "nH4":"SAMPLE_TEXT", "ph":"SAMPLE_TEXT", "tempVal":null, "timestamp":"0", "picture":null, "description":"SAMPLE_TEXT", "userId":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "date":"2020-01-01T00:00:00.000Z", "nO2":"SAMPLE_TEXT", "nO3":"SAMPLE_TEXT", "nH4":"SAMPLE_TEXT", "ph":"SAMPLE_TEXT", "tempVal":null, "timestamp":"0", "userId":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_chemicalAnalysis_url"))).exitHereIfFailed
             .pause(10)

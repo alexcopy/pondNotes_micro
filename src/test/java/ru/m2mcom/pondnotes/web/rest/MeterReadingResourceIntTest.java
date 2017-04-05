@@ -49,6 +49,9 @@ public class MeterReadingResourceIntTest {
     private static final ZonedDateTime DEFAULT_READING_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_READING_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
     private static final Double DEFAULT_READING = 1D;
     private static final Double UPDATED_READING = 2D;
 
@@ -57,9 +60,6 @@ public class MeterReadingResourceIntTest {
 
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
-
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_USER_ID = 1;
     private static final Integer UPDATED_USER_ID = 2;
@@ -111,10 +111,10 @@ public class MeterReadingResourceIntTest {
     public static MeterReading createEntity(EntityManager em) {
         MeterReading meterReading = new MeterReading()
             .readingDate(DEFAULT_READING_DATE)
+            .description(DEFAULT_DESCRIPTION)
             .reading(DEFAULT_READING)
             .tempVal(DEFAULT_TEMP_VAL)
             .timestamp(DEFAULT_TIMESTAMP)
-            .description(DEFAULT_DESCRIPTION)
             .userId(DEFAULT_USER_ID);
         return meterReading;
     }
@@ -142,10 +142,10 @@ public class MeterReadingResourceIntTest {
         assertThat(meterReadingList).hasSize(databaseSizeBeforeCreate + 1);
         MeterReading testMeterReading = meterReadingList.get(meterReadingList.size() - 1);
         assertThat(testMeterReading.getReadingDate()).isEqualTo(DEFAULT_READING_DATE);
+        assertThat(testMeterReading.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testMeterReading.getReading()).isEqualTo(DEFAULT_READING);
         assertThat(testMeterReading.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testMeterReading.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
-        assertThat(testMeterReading.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testMeterReading.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the MeterReading in Elasticsearch
@@ -242,10 +242,10 @@ public class MeterReadingResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(meterReading.getId().intValue())))
             .andExpect(jsonPath("$.[*].readingDate").value(hasItem(sameInstant(DEFAULT_READING_DATE))))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].reading").value(hasItem(DEFAULT_READING.doubleValue())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
@@ -261,10 +261,10 @@ public class MeterReadingResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(meterReading.getId().intValue()))
             .andExpect(jsonPath("$.readingDate").value(sameInstant(DEFAULT_READING_DATE)))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.reading").value(DEFAULT_READING.doubleValue()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
@@ -288,10 +288,10 @@ public class MeterReadingResourceIntTest {
         MeterReading updatedMeterReading = meterReadingRepository.findOne(meterReading.getId());
         updatedMeterReading
             .readingDate(UPDATED_READING_DATE)
+            .description(UPDATED_DESCRIPTION)
             .reading(UPDATED_READING)
             .tempVal(UPDATED_TEMP_VAL)
             .timestamp(UPDATED_TIMESTAMP)
-            .description(UPDATED_DESCRIPTION)
             .userId(UPDATED_USER_ID);
         MeterReadingDTO meterReadingDTO = meterReadingMapper.meterReadingToMeterReadingDTO(updatedMeterReading);
 
@@ -305,10 +305,10 @@ public class MeterReadingResourceIntTest {
         assertThat(meterReadingList).hasSize(databaseSizeBeforeUpdate);
         MeterReading testMeterReading = meterReadingList.get(meterReadingList.size() - 1);
         assertThat(testMeterReading.getReadingDate()).isEqualTo(UPDATED_READING_DATE);
+        assertThat(testMeterReading.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testMeterReading.getReading()).isEqualTo(UPDATED_READING);
         assertThat(testMeterReading.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testMeterReading.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
-        assertThat(testMeterReading.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testMeterReading.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the MeterReading in Elasticsearch
@@ -370,10 +370,10 @@ public class MeterReadingResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(meterReading.getId().intValue())))
             .andExpect(jsonPath("$.[*].readingDate").value(hasItem(sameInstant(DEFAULT_READING_DATE))))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].reading").value(hasItem(DEFAULT_READING.doubleValue())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 

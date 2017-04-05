@@ -35,15 +35,15 @@ public class OtherWorks implements Serializable {
     @Column(name = "qty")
     private Integer qty;
 
+    @Column(name = "descripton")
+    private String descripton;
+
     @NotNull
     @Column(name = "temp_val", nullable = false)
     private Double tempVal;
 
     @Column(name = "timestamp")
     private Integer timestamp;
-
-    @Column(name = "description")
-    private String description;
 
     @Column(name = "user_id")
     private Integer userId;
@@ -95,6 +95,19 @@ public class OtherWorks implements Serializable {
         this.qty = qty;
     }
 
+    public String getDescripton() {
+        return descripton;
+    }
+
+    public OtherWorks descripton(String descripton) {
+        this.descripton = descripton;
+        return this;
+    }
+
+    public void setDescripton(String descripton) {
+        this.descripton = descripton;
+    }
+
     public Double getTempVal() {
         return tempVal;
     }
@@ -119,19 +132,6 @@ public class OtherWorks implements Serializable {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public OtherWorks description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Integer getUserId() {
@@ -174,9 +174,9 @@ public class OtherWorks implements Serializable {
             ", date='" + date + "'" +
             ", reason='" + reason + "'" +
             ", qty='" + qty + "'" +
+            ", descripton='" + descripton + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
-            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

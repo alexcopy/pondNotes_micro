@@ -35,7 +35,8 @@ public class Device implements Serializable {
     @Column(name = "device_type", nullable = false)
     private DeviceType deviceType;
 
-    @Column(name = "description")
+    @NotNull
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Column(name = "timestamp")

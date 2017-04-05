@@ -25,8 +25,6 @@ public class ChemicalsDTO implements Serializable {
 
     private Integer timestamp;
 
-    private String description;
-
     private Integer userId;
 
     public Long getId() {
@@ -71,13 +69,6 @@ public class ChemicalsDTO implements Serializable {
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
     }
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
     public Integer getUserId() {
         return userId;
     }
@@ -116,7 +107,6 @@ public class ChemicalsDTO implements Serializable {
             ", reason='" + reason + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
-            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

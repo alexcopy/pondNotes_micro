@@ -1,8 +1,8 @@
 entity Location {
-	streetAddress String required,
+	streetAddress String,
 	postalCode String,
-	city String required,
-	county String required,
+	city String,
+	county String,
 	timestamp Integer
 }
 
@@ -11,13 +11,14 @@ entity Tank {
     tankType TankType required,
     description String,
     timestamp Integer,
+
 }
 
 
 entity Device {
 	deviceName String required,
     deviceType DeviceType required,
-    description String,
+    description String required,
     timestamp Integer,
 
 }
@@ -32,34 +33,33 @@ enum DeviceType {
 entity TempMeter {
     readingDate ZonedDateTime,
 	tempVal   Double required,
-    description String,
     timestamp Integer,
     userId Integer
 }
 
 entity MeterReading {
 	readingDate ZonedDateTime required,
+	description String,
 	reading Double required,
 	tempVal Double required,
 	timestamp Integer,
-	description String,
 	userId Integer
 }
 
  entity FilterPumpCleaning {
 	cleaningDate ZonedDateTime required,
+	description String,
     tempVal Double required,
     timestamp Integer,
-	description String,
     userId Integer
 }
 
  entity WaterChange {
 	changeDate ZonedDateTime required,
+	description String,
     readingBefore Double required,
     readingAfter Double required,
     tempVal Double required,
-	description String,
     timestamp Integer,
     userId Integer
 }
@@ -82,8 +82,6 @@ entity MeterReading {
     ph String,
     tempVal Double required,
     timestamp Integer,
-    picture ImageBlob,
-    description String,
     userId Integer
 }
 
@@ -93,7 +91,6 @@ entity MeterReading {
     reason String,
     tempVal Double required,
     timestamp Integer,
-    description String,
     userId Integer
 }
 
@@ -101,20 +98,20 @@ entity MeterReading {
 	date ZonedDateTime required,
     reason String,
 	qty Integer,
+    descripton String,
     tempVal Double required,
     timestamp Integer,
-    description String,
     userId Integer
 }
 
 entity RegisteredUser{
-   userName String,
-    description String,
+   userName String
 }
 
 enum StockCase {
     ADDED, REMOVED, DIED, HERON, OTHER
 }
+
 
 
 
@@ -132,13 +129,5 @@ service all with serviceImpl
 // Set an angular suffix
 angularSuffix * with notes
 
-yo jhipster:entity RegisteredUser --force &&
-yo jhipster:entity Location --force &&
-yo jhipster:entity Tank --force &&
-yo jhipster:entity Device --force &&
-yo jhipster:entity MeterReading --force &&
-yo jhipster:entity WaterChange --force &&
-yo jhipster:entity LiveStock --force &&
-yo jhipster:entity ChemicalAnalysis --force &&
-yo jhipster:entity Chemicals --force &&
-yo jhipster:entity OtherWorks --force
+ 
+

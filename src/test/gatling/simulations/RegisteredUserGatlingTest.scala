@@ -68,7 +68,7 @@ class RegisteredUserGatlingTest extends Simulation {
             .exec(http("Create new registeredUser")
             .post("/pondnotes/api/registered-users")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "userName":"SAMPLE_TEXT", "description":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "userName":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_registeredUser_url"))).exitHereIfFailed
             .pause(10)

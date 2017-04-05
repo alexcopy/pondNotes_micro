@@ -19,6 +19,7 @@ public class DeviceDTO implements Serializable {
     @NotNull
     private DeviceType deviceType;
 
+    @NotNull
     private String description;
 
     private Integer timestamp;

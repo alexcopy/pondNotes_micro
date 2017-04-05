@@ -18,8 +18,6 @@ public class TempMeterDTO implements Serializable {
     @NotNull
     private Double tempVal;
 
-    private String description;
-
     private Integer timestamp;
 
     private Integer userId;
@@ -44,13 +42,6 @@ public class TempMeterDTO implements Serializable {
 
     public void setTempVal(Double tempVal) {
         this.tempVal = tempVal;
-    }
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
     public Integer getTimestamp() {
         return timestamp;
@@ -94,7 +85,6 @@ public class TempMeterDTO implements Serializable {
             "id=" + id +
             ", readingDate='" + readingDate + "'" +
             ", tempVal='" + tempVal + "'" +
-            ", description='" + description + "'" +
             ", timestamp='" + timestamp + "'" +
             ", userId='" + userId + "'" +
             '}';

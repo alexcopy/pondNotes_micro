@@ -16,6 +16,8 @@ public class WaterChangeDTO implements Serializable {
     @NotNull
     private ZonedDateTime changeDate;
 
+    private String description;
+
     @NotNull
     private Double readingBefore;
 
@@ -24,8 +26,6 @@ public class WaterChangeDTO implements Serializable {
 
     @NotNull
     private Double tempVal;
-
-    private String description;
 
     private Integer timestamp;
 
@@ -44,6 +44,13 @@ public class WaterChangeDTO implements Serializable {
 
     public void setChangeDate(ZonedDateTime changeDate) {
         this.changeDate = changeDate;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     public Double getReadingBefore() {
         return readingBefore;
@@ -65,13 +72,6 @@ public class WaterChangeDTO implements Serializable {
 
     public void setTempVal(Double tempVal) {
         this.tempVal = tempVal;
-    }
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
     public Integer getTimestamp() {
         return timestamp;
@@ -114,10 +114,10 @@ public class WaterChangeDTO implements Serializable {
         return "WaterChangeDTO{" +
             "id=" + id +
             ", changeDate='" + changeDate + "'" +
+            ", description='" + description + "'" +
             ", readingBefore='" + readingBefore + "'" +
             ", readingAfter='" + readingAfter + "'" +
             ", tempVal='" + tempVal + "'" +
-            ", description='" + description + "'" +
             ", timestamp='" + timestamp + "'" +
             ", userId='" + userId + "'" +
             '}';
