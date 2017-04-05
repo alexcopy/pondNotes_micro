@@ -82,6 +82,7 @@ entity MeterReading {
     ph String,
     tempVal Double required,
     timestamp Integer,
+    picture ImageBlob,
     description String,
     userId Integer
 }
@@ -130,5 +131,4 @@ search * with elasticsearch
 service all with serviceImpl
 // Set an angular suffix
 angularSuffix * with notes
-
 
