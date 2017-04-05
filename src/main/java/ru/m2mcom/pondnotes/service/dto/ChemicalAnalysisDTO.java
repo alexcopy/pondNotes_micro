@@ -5,6 +5,7 @@ import java.time.ZonedDateTime;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Lob;
 
 /**
  * A DTO for the ChemicalAnalysis entity.
@@ -28,6 +29,10 @@ public class ChemicalAnalysisDTO implements Serializable {
     private Double tempVal;
 
     private Integer timestamp;
+
+    @Lob
+    private byte[] picture;
+    private String pictureContentType;
 
     private String description;
 
@@ -89,6 +94,21 @@ public class ChemicalAnalysisDTO implements Serializable {
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
     }
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
+
+    public String getPictureContentType() {
+        return pictureContentType;
+    }
+
+    public void setPictureContentType(String pictureContentType) {
+        this.pictureContentType = pictureContentType;
+    }
     public String getDescription() {
         return description;
     }
@@ -136,6 +156,7 @@ public class ChemicalAnalysisDTO implements Serializable {
             ", ph='" + ph + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", picture='" + picture + "'" +
             ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';

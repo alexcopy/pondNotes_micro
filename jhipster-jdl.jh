@@ -132,3 +132,13 @@ service all with serviceImpl
 // Set an angular suffix
 angularSuffix * with notes
 
+yo jhipster:entity RegisteredUser --force &&
+yo jhipster:entity Location --force &&
+yo jhipster:entity Tank --force &&
+yo jhipster:entity Device --force &&
+yo jhipster:entity MeterReading --force &&
+yo jhipster:entity WaterChange --force &&
+yo jhipster:entity LiveStock --force &&
+yo jhipster:entity ChemicalAnalysis --force &&
+yo jhipster:entity Chemicals --force &&
+yo jhipster:entity OtherWorks --force

@@ -23,6 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.time.Instant;
@@ -66,6 +67,11 @@ public class ChemicalAnalysisResourceIntTest {
 
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
+
+    private static final byte[] DEFAULT_PICTURE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_PICTURE = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_PICTURE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_PICTURE_CONTENT_TYPE = "image/png";
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
@@ -126,6 +132,8 @@ public class ChemicalAnalysisResourceIntTest {
             .ph(DEFAULT_PH)
             .tempVal(DEFAULT_TEMP_VAL)
             .timestamp(DEFAULT_TIMESTAMP)
+            .picture(DEFAULT_PICTURE)
+            .pictureContentType(DEFAULT_PICTURE_CONTENT_TYPE)
             .description(DEFAULT_DESCRIPTION)
             .userId(DEFAULT_USER_ID);
         return chemicalAnalysis;
@@ -160,6 +168,8 @@ public class ChemicalAnalysisResourceIntTest {
         assertThat(testChemicalAnalysis.getPh()).isEqualTo(DEFAULT_PH);
         assertThat(testChemicalAnalysis.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testChemicalAnalysis.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testChemicalAnalysis.getPicture()).isEqualTo(DEFAULT_PICTURE);
+        assertThat(testChemicalAnalysis.getPictureContentType()).isEqualTo(DEFAULT_PICTURE_CONTENT_TYPE);
         assertThat(testChemicalAnalysis.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testChemicalAnalysis.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
@@ -244,6 +254,8 @@ public class ChemicalAnalysisResourceIntTest {
             .andExpect(jsonPath("$.[*].ph").value(hasItem(DEFAULT_PH.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].pictureContentType").value(hasItem(DEFAULT_PICTURE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].picture").value(hasItem(Base64Utils.encodeToString(DEFAULT_PICTURE))))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
@@ -266,6 +278,8 @@ public class ChemicalAnalysisResourceIntTest {
             .andExpect(jsonPath("$.ph").value(DEFAULT_PH.toString()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.pictureContentType").value(DEFAULT_PICTURE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.picture").value(Base64Utils.encodeToString(DEFAULT_PICTURE)))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
@@ -296,6 +310,8 @@ public class ChemicalAnalysisResourceIntTest {
             .ph(UPDATED_PH)
             .tempVal(UPDATED_TEMP_VAL)
             .timestamp(UPDATED_TIMESTAMP)
+            .picture(UPDATED_PICTURE)
+            .pictureContentType(UPDATED_PICTURE_CONTENT_TYPE)
             .description(UPDATED_DESCRIPTION)
             .userId(UPDATED_USER_ID);
         ChemicalAnalysisDTO chemicalAnalysisDTO = chemicalAnalysisMapper.chemicalAnalysisToChemicalAnalysisDTO(updatedChemicalAnalysis);
@@ -316,6 +332,8 @@ public class ChemicalAnalysisResourceIntTest {
         assertThat(testChemicalAnalysis.getPh()).isEqualTo(UPDATED_PH);
         assertThat(testChemicalAnalysis.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testChemicalAnalysis.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testChemicalAnalysis.getPicture()).isEqualTo(UPDATED_PICTURE);
+        assertThat(testChemicalAnalysis.getPictureContentType()).isEqualTo(UPDATED_PICTURE_CONTENT_TYPE);
         assertThat(testChemicalAnalysis.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testChemicalAnalysis.getUserId()).isEqualTo(UPDATED_USER_ID);
 
@@ -384,6 +402,8 @@ public class ChemicalAnalysisResourceIntTest {
             .andExpect(jsonPath("$.[*].ph").value(hasItem(DEFAULT_PH.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].pictureContentType").value(hasItem(DEFAULT_PICTURE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].picture").value(hasItem(Base64Utils.encodeToString(DEFAULT_PICTURE))))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
