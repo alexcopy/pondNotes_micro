@@ -9,16 +9,13 @@ import java.util.List;
 /**
  * Mapper for the entity FilterPumpCleaning and its DTO FilterPumpCleaningDTO.
  */
-@Mapper(componentModel = "spring", uses = {DeviceMapper.class, })
+@Mapper(componentModel = "spring", uses = {})
 public interface FilterPumpCleaningMapper {
 
-    @Mapping(source = "device.id", target = "deviceId")
-    @Mapping(source = "device.deviceName", target = "deviceDeviceName")
     FilterPumpCleaningDTO filterPumpCleaningToFilterPumpCleaningDTO(FilterPumpCleaning filterPumpCleaning);
 
     List<FilterPumpCleaningDTO> filterPumpCleaningsToFilterPumpCleaningDTOs(List<FilterPumpCleaning> filterPumpCleanings);
 
-    @Mapping(source = "deviceId", target = "device")
     FilterPumpCleaning filterPumpCleaningDTOToFilterPumpCleaning(FilterPumpCleaningDTO filterPumpCleaningDTO);
 
     List<FilterPumpCleaning> filterPumpCleaningDTOsToFilterPumpCleanings(List<FilterPumpCleaningDTO> filterPumpCleaningDTOs);

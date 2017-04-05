@@ -29,9 +29,6 @@ public class WaterChange implements Serializable {
     @Column(name = "change_date", nullable = false)
     private ZonedDateTime changeDate;
 
-    @Column(name = "description")
-    private String description;
-
     @NotNull
     @Column(name = "reading_before", nullable = false)
     private Double readingBefore;
@@ -44,14 +41,14 @@ public class WaterChange implements Serializable {
     @Column(name = "temp_val", nullable = false)
     private Double tempVal;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "timestamp")
     private Integer timestamp;
 
     @Column(name = "user_id")
     private Integer userId;
-
-    @ManyToOne
-    private Tank tank;
 
     public Long getId() {
         return id;
@@ -72,19 +69,6 @@ public class WaterChange implements Serializable {
 
     public void setChangeDate(ZonedDateTime changeDate) {
         this.changeDate = changeDate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public WaterChange description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Double getReadingBefore() {
@@ -126,6 +110,19 @@ public class WaterChange implements Serializable {
         this.tempVal = tempVal;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public WaterChange description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Integer getTimestamp() {
         return timestamp;
     }
@@ -150,19 +147,6 @@ public class WaterChange implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Tank getTank() {
-        return tank;
-    }
-
-    public WaterChange tank(Tank tank) {
-        this.tank = tank;
-        return this;
-    }
-
-    public void setTank(Tank tank) {
-        this.tank = tank;
     }
 
     @Override
@@ -190,10 +174,10 @@ public class WaterChange implements Serializable {
         return "WaterChange{" +
             "id=" + id +
             ", changeDate='" + changeDate + "'" +
-            ", description='" + description + "'" +
             ", readingBefore='" + readingBefore + "'" +
             ", readingAfter='" + readingAfter + "'" +
             ", tempVal='" + tempVal + "'" +
+            ", description='" + description + "'" +
             ", timestamp='" + timestamp + "'" +
             ", userId='" + userId + "'" +
             '}';

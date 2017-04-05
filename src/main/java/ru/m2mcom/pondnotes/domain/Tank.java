@@ -41,12 +41,6 @@ public class Tank implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
-    @ManyToOne
-    private Location location;
-
-    @ManyToOne
-    private RegisteredUser registereduser;
-
     public Long getId() {
         return id;
     }
@@ -105,32 +99,6 @@ public class Tank implements Serializable {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public Tank location(Location location) {
-        this.location = location;
-        return this;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public RegisteredUser getRegistereduser() {
-        return registereduser;
-    }
-
-    public Tank registereduser(RegisteredUser registeredUser) {
-        this.registereduser = registeredUser;
-        return this;
-    }
-
-    public void setRegistereduser(RegisteredUser registeredUser) {
-        this.registereduser = registeredUser;
     }
 
     @Override

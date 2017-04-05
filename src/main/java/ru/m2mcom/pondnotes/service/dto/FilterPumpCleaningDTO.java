@@ -4,8 +4,6 @@ package ru.m2mcom.pondnotes.service.dto;
 import java.time.ZonedDateTime;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -18,18 +16,14 @@ public class FilterPumpCleaningDTO implements Serializable {
     @NotNull
     private ZonedDateTime cleaningDate;
 
-    private String description;
-
     @NotNull
     private Double tempVal;
 
     private Integer timestamp;
 
+    private String description;
+
     private Integer userId;
-
-    private Long deviceId;
-
-    private String deviceDeviceName;
 
     public Long getId() {
         return id;
@@ -45,13 +39,6 @@ public class FilterPumpCleaningDTO implements Serializable {
     public void setCleaningDate(ZonedDateTime cleaningDate) {
         this.cleaningDate = cleaningDate;
     }
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
     public Double getTempVal() {
         return tempVal;
     }
@@ -66,28 +53,19 @@ public class FilterPumpCleaningDTO implements Serializable {
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
     }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public Integer getUserId() {
         return userId;
     }
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Long getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(Long deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public String getDeviceDeviceName() {
-        return deviceDeviceName;
-    }
-
-    public void setDeviceDeviceName(String deviceDeviceName) {
-        this.deviceDeviceName = deviceDeviceName;
     }
 
     @Override
@@ -116,9 +94,9 @@ public class FilterPumpCleaningDTO implements Serializable {
         return "FilterPumpCleaningDTO{" +
             "id=" + id +
             ", cleaningDate='" + cleaningDate + "'" +
-            ", description='" + description + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

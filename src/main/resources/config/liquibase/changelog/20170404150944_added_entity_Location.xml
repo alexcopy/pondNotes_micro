@@ -23,7 +23,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="street_address" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="postal_code" type="varchar(255)">
@@ -31,18 +31,14 @@
             </column>
 
             <column name="city" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="county" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="timestamp" type="integer">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="registereduser_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

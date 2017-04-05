@@ -48,11 +48,11 @@ public class ChemicalAnalysis implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "user_id")
     private Integer userId;
-
-    @ManyToOne
-    private Tank tank;
 
     public Long getId() {
         return id;
@@ -153,6 +153,19 @@ public class ChemicalAnalysis implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public ChemicalAnalysis description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -164,19 +177,6 @@ public class ChemicalAnalysis implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Tank getTank() {
-        return tank;
-    }
-
-    public ChemicalAnalysis tank(Tank tank) {
-        this.tank = tank;
-        return this;
-    }
-
-    public void setTank(Tank tank) {
-        this.tank = tank;
     }
 
     @Override
@@ -210,6 +210,7 @@ public class ChemicalAnalysis implements Serializable {
             ", ph='" + ph + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

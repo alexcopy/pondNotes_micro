@@ -9,16 +9,13 @@ import java.util.List;
 /**
  * Mapper for the entity TempMeter and its DTO TempMeterDTO.
  */
-@Mapper(componentModel = "spring", uses = {TankMapper.class, })
+@Mapper(componentModel = "spring", uses = {})
 public interface TempMeterMapper {
 
-    @Mapping(source = "tank.id", target = "tankId")
-    @Mapping(source = "tank.tankName", target = "tankTankName")
     TempMeterDTO tempMeterToTempMeterDTO(TempMeter tempMeter);
 
     List<TempMeterDTO> tempMetersToTempMeterDTOs(List<TempMeter> tempMeters);
 
-    @Mapping(source = "tankId", target = "tank")
     TempMeter tempMeterDTOToTempMeter(TempMeterDTO tempMeterDTO);
 
     List<TempMeter> tempMeterDTOsToTempMeters(List<TempMeterDTO> tempMeterDTOs);

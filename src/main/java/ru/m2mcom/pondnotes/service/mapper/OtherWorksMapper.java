@@ -9,16 +9,13 @@ import java.util.List;
 /**
  * Mapper for the entity OtherWorks and its DTO OtherWorksDTO.
  */
-@Mapper(componentModel = "spring", uses = {TankMapper.class, })
+@Mapper(componentModel = "spring", uses = {})
 public interface OtherWorksMapper {
 
-    @Mapping(source = "tank.id", target = "tankId")
-    @Mapping(source = "tank.tankName", target = "tankTankName")
     OtherWorksDTO otherWorksToOtherWorksDTO(OtherWorks otherWorks);
 
     List<OtherWorksDTO> otherWorksToOtherWorksDTOs(List<OtherWorks> otherWorks);
 
-    @Mapping(source = "tankId", target = "tank")
     OtherWorks otherWorksDTOToOtherWorks(OtherWorksDTO otherWorksDTO);
 
     List<OtherWorks> otherWorksDTOsToOtherWorks(List<OtherWorksDTO> otherWorksDTOs);

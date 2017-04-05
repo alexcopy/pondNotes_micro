@@ -67,6 +67,9 @@ public class ChemicalAnalysisResourceIntTest {
     private static final Integer DEFAULT_TIMESTAMP = 1;
     private static final Integer UPDATED_TIMESTAMP = 2;
 
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
     private static final Integer DEFAULT_USER_ID = 1;
     private static final Integer UPDATED_USER_ID = 2;
 
@@ -123,6 +126,7 @@ public class ChemicalAnalysisResourceIntTest {
             .ph(DEFAULT_PH)
             .tempVal(DEFAULT_TEMP_VAL)
             .timestamp(DEFAULT_TIMESTAMP)
+            .description(DEFAULT_DESCRIPTION)
             .userId(DEFAULT_USER_ID);
         return chemicalAnalysis;
     }
@@ -156,6 +160,7 @@ public class ChemicalAnalysisResourceIntTest {
         assertThat(testChemicalAnalysis.getPh()).isEqualTo(DEFAULT_PH);
         assertThat(testChemicalAnalysis.getTempVal()).isEqualTo(DEFAULT_TEMP_VAL);
         assertThat(testChemicalAnalysis.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testChemicalAnalysis.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testChemicalAnalysis.getUserId()).isEqualTo(DEFAULT_USER_ID);
 
         // Validate the ChemicalAnalysis in Elasticsearch
@@ -239,6 +244,7 @@ public class ChemicalAnalysisResourceIntTest {
             .andExpect(jsonPath("$.[*].ph").value(hasItem(DEFAULT_PH.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 
@@ -260,6 +266,7 @@ public class ChemicalAnalysisResourceIntTest {
             .andExpect(jsonPath("$.ph").value(DEFAULT_PH.toString()))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
     }
 
@@ -289,6 +296,7 @@ public class ChemicalAnalysisResourceIntTest {
             .ph(UPDATED_PH)
             .tempVal(UPDATED_TEMP_VAL)
             .timestamp(UPDATED_TIMESTAMP)
+            .description(UPDATED_DESCRIPTION)
             .userId(UPDATED_USER_ID);
         ChemicalAnalysisDTO chemicalAnalysisDTO = chemicalAnalysisMapper.chemicalAnalysisToChemicalAnalysisDTO(updatedChemicalAnalysis);
 
@@ -308,6 +316,7 @@ public class ChemicalAnalysisResourceIntTest {
         assertThat(testChemicalAnalysis.getPh()).isEqualTo(UPDATED_PH);
         assertThat(testChemicalAnalysis.getTempVal()).isEqualTo(UPDATED_TEMP_VAL);
         assertThat(testChemicalAnalysis.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
+        assertThat(testChemicalAnalysis.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testChemicalAnalysis.getUserId()).isEqualTo(UPDATED_USER_ID);
 
         // Validate the ChemicalAnalysis in Elasticsearch
@@ -375,6 +384,7 @@ public class ChemicalAnalysisResourceIntTest {
             .andExpect(jsonPath("$.[*].ph").value(hasItem(DEFAULT_PH.toString())))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
     }
 

@@ -1,13 +1,6 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "tank",
-            "otherEntityName": "tank",
-            "otherEntityField": "tankName"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "date",
@@ -54,5 +47,6 @@
     "pagination": "pagination",
     "service": "serviceImpl",
     "microserviceName": "pondNotes",
-    "searchEngine": "elasticsearch"
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "notes"
 }

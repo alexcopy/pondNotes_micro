@@ -4,8 +4,6 @@ package ru.m2mcom.pondnotes.service.dto;
 import java.time.ZonedDateTime;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -31,11 +29,9 @@ public class ChemicalAnalysisDTO implements Serializable {
 
     private Integer timestamp;
 
+    private String description;
+
     private Integer userId;
-
-    private Long tankId;
-
-    private String tankTankName;
 
     public Long getId() {
         return id;
@@ -93,28 +89,19 @@ public class ChemicalAnalysisDTO implements Serializable {
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
     }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public Integer getUserId() {
         return userId;
     }
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Long getTankId() {
-        return tankId;
-    }
-
-    public void setTankId(Long tankId) {
-        this.tankId = tankId;
-    }
-
-    public String getTankTankName() {
-        return tankTankName;
-    }
-
-    public void setTankTankName(String tankTankName) {
-        this.tankTankName = tankTankName;
     }
 
     @Override
@@ -149,6 +136,7 @@ public class ChemicalAnalysisDTO implements Serializable {
             ", ph='" + ph + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

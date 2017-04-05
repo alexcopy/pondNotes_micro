@@ -9,16 +9,13 @@ import java.util.List;
 /**
  * Mapper for the entity WaterChange and its DTO WaterChangeDTO.
  */
-@Mapper(componentModel = "spring", uses = {TankMapper.class, })
+@Mapper(componentModel = "spring", uses = {})
 public interface WaterChangeMapper {
 
-    @Mapping(source = "tank.id", target = "tankId")
-    @Mapping(source = "tank.tankName", target = "tankTankName")
     WaterChangeDTO waterChangeToWaterChangeDTO(WaterChange waterChange);
 
     List<WaterChangeDTO> waterChangesToWaterChangeDTOs(List<WaterChange> waterChanges);
 
-    @Mapping(source = "tankId", target = "tank")
     WaterChange waterChangeDTOToWaterChange(WaterChangeDTO waterChangeDTO);
 
     List<WaterChange> waterChangeDTOsToWaterChanges(List<WaterChangeDTO> waterChangeDTOs);

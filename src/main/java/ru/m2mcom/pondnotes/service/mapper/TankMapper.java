@@ -9,19 +9,13 @@ import java.util.List;
 /**
  * Mapper for the entity Tank and its DTO TankDTO.
  */
-@Mapper(componentModel = "spring", uses = {LocationMapper.class, RegisteredUserMapper.class, })
+@Mapper(componentModel = "spring", uses = {})
 public interface TankMapper {
 
-    @Mapping(source = "location.id", target = "locationId")
-    @Mapping(source = "location.streetAddress", target = "locationStreetAddress")
-    @Mapping(source = "registereduser.id", target = "registereduserId")
-    @Mapping(source = "registereduser.userName", target = "registereduserUserName")
     TankDTO tankToTankDTO(Tank tank);
 
     List<TankDTO> tanksToTankDTOs(List<Tank> tanks);
 
-    @Mapping(source = "locationId", target = "location")
-    @Mapping(source = "registereduserId", target = "registereduser")
     Tank tankDTOToTank(TankDTO tankDTO);
 
     List<Tank> tankDTOsToTanks(List<TankDTO> tankDTOs);

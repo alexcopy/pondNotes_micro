@@ -44,6 +44,9 @@ public class RegisteredUserResourceIntTest {
     private static final String DEFAULT_USER_NAME = "AAAAAAAAAA";
     private static final String UPDATED_USER_NAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
     @Autowired
     private RegisteredUserRepository registeredUserRepository;
 
@@ -90,7 +93,8 @@ public class RegisteredUserResourceIntTest {
      */
     public static RegisteredUser createEntity(EntityManager em) {
         RegisteredUser registeredUser = new RegisteredUser()
-            .userName(DEFAULT_USER_NAME);
+            .userName(DEFAULT_USER_NAME)
+            .description(DEFAULT_DESCRIPTION);
         return registeredUser;
     }
 
@@ -117,6 +121,7 @@ public class RegisteredUserResourceIntTest {
         assertThat(registeredUserList).hasSize(databaseSizeBeforeCreate + 1);
         RegisteredUser testRegisteredUser = registeredUserList.get(registeredUserList.size() - 1);
         assertThat(testRegisteredUser.getUserName()).isEqualTo(DEFAULT_USER_NAME);
+        assertThat(testRegisteredUser.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
 
         // Validate the RegisteredUser in Elasticsearch
         RegisteredUser registeredUserEs = registeredUserSearchRepository.findOne(testRegisteredUser.getId());
@@ -154,7 +159,8 @@ public class RegisteredUserResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(registeredUser.getId().intValue())))
-            .andExpect(jsonPath("$.[*].userName").value(hasItem(DEFAULT_USER_NAME.toString())));
+            .andExpect(jsonPath("$.[*].userName").value(hasItem(DEFAULT_USER_NAME.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
 
     @Test
@@ -168,7 +174,8 @@ public class RegisteredUserResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(registeredUser.getId().intValue()))
-            .andExpect(jsonPath("$.userName").value(DEFAULT_USER_NAME.toString()));
+            .andExpect(jsonPath("$.userName").value(DEFAULT_USER_NAME.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
 
     @Test
@@ -190,7 +197,8 @@ public class RegisteredUserResourceIntTest {
         // Update the registeredUser
         RegisteredUser updatedRegisteredUser = registeredUserRepository.findOne(registeredUser.getId());
         updatedRegisteredUser
-            .userName(UPDATED_USER_NAME);
+            .userName(UPDATED_USER_NAME)
+            .description(UPDATED_DESCRIPTION);
         RegisteredUserDTO registeredUserDTO = registeredUserMapper.registeredUserToRegisteredUserDTO(updatedRegisteredUser);
 
         restRegisteredUserMockMvc.perform(put("/api/registered-users")
@@ -203,6 +211,7 @@ public class RegisteredUserResourceIntTest {
         assertThat(registeredUserList).hasSize(databaseSizeBeforeUpdate);
         RegisteredUser testRegisteredUser = registeredUserList.get(registeredUserList.size() - 1);
         assertThat(testRegisteredUser.getUserName()).isEqualTo(UPDATED_USER_NAME);
+        assertThat(testRegisteredUser.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
 
         // Validate the RegisteredUser in Elasticsearch
         RegisteredUser registeredUserEs = registeredUserSearchRepository.findOne(testRegisteredUser.getId());
@@ -262,7 +271,8 @@ public class RegisteredUserResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(registeredUser.getId().intValue())))
-            .andExpect(jsonPath("$.[*].userName").value(hasItem(DEFAULT_USER_NAME.toString())));
+            .andExpect(jsonPath("$.[*].userName").value(hasItem(DEFAULT_USER_NAME.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
 
     @Test

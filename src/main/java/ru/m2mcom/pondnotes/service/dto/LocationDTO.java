@@ -1,9 +1,8 @@
 package ru.m2mcom.pondnotes.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -13,19 +12,18 @@ public class LocationDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private String streetAddress;
 
     private String postalCode;
 
+    @NotNull
     private String city;
 
+    @NotNull
     private String county;
 
     private Integer timestamp;
-
-    private Long registereduserId;
-
-    private String registereduserUserName;
 
     public Long getId() {
         return id;
@@ -68,22 +66,6 @@ public class LocationDTO implements Serializable {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Long getRegistereduserId() {
-        return registereduserId;
-    }
-
-    public void setRegistereduserId(Long registeredUserId) {
-        this.registereduserId = registeredUserId;
-    }
-
-    public String getRegistereduserUserName() {
-        return registereduserUserName;
-    }
-
-    public void setRegistereduserUserName(String registeredUserUserName) {
-        this.registereduserUserName = registeredUserUserName;
     }
 
     @Override

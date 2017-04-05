@@ -1,19 +1,6 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "location",
-            "otherEntityName": "location",
-            "otherEntityField": "streetAddress"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "registereduser",
-            "otherEntityName": "registeredUser",
-            "otherEntityField": "userName"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "tankName",
@@ -45,5 +32,6 @@
     "pagination": "no",
     "service": "serviceImpl",
     "microserviceName": "pondNotes",
-    "searchEngine": "elasticsearch"
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "notes"
 }

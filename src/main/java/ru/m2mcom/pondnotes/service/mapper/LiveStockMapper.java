@@ -9,16 +9,13 @@ import java.util.List;
 /**
  * Mapper for the entity LiveStock and its DTO LiveStockDTO.
  */
-@Mapper(componentModel = "spring", uses = {TankMapper.class, })
+@Mapper(componentModel = "spring", uses = {})
 public interface LiveStockMapper {
 
-    @Mapping(source = "tank.id", target = "tankId")
-    @Mapping(source = "tank.tankName", target = "tankTankName")
     LiveStockDTO liveStockToLiveStockDTO(LiveStock liveStock);
 
     List<LiveStockDTO> liveStocksToLiveStockDTOs(List<LiveStock> liveStocks);
 
-    @Mapping(source = "tankId", target = "tank")
     LiveStock liveStockDTOToLiveStock(LiveStockDTO liveStockDTO);
 
     List<LiveStock> liveStockDTOsToLiveStocks(List<LiveStockDTO> liveStockDTOs);

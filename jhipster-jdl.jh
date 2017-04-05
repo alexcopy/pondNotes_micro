@@ -1,7 +1,7 @@
 entity Location {
 	streetAddress String required,
 	postalCode String,
-	city String requiredё,
+	city String required,
 	county String required,
 	timestamp Integer
 }
@@ -114,40 +114,6 @@ entity RegisteredUser{
 enum StockCase {
     ADDED, REMOVED, DIED, HERON, OTHER
 }
-
-
-relationship OneToOne{
-   Device{tank(tankName)} to Tank
-  }
-
-relationship ManyToOne {
-   Tank{location(streetAddress)} to Location,
-   WaterChange{tank(tankName)} to Tank,
-   LiveStock {tank(tankName)} to Tank,
-   MeterReading{tank(tankName)} to Tank,
-   OtherWorks{tank(tankName)} to Tank,
-   TempMeter{tank(tankName)} to Tank,
-   ChemicalAnalysis{tank(tankName)} to Tank,
-   FilterPumpCleaning{device(deviceName)} to Device,
-   Chemicals{tank(tankName)} to Tank,
-   Tank{registereduser(userName)} to RegisteredUser,
-   Location {registereduser(userName)} to RegisteredUser,
-   Device {registereduser(userName)} to RegisteredUser
-}
-
-/**
-yo jhipster:entity User --force &&
-yo jhipster:entity Location --force &&
-yo jhipster:entity Tank --force &&
-yo jhipster:entity Device --force &&
-yo jhipster:entity MeterReading --force &&
-yo jhipster:entity WaterChange --force &&
-yo jhipster:entity LiveStock --force &&
-yo jhipster:entity ChemicalAnalysis --force &&
-yo jhipster:entity Chemicals --force &&
-yo jhipster:entity OtherWorks --force
-
-*/
 
 
 

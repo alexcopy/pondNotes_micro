@@ -1,13 +1,6 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "tank",
-            "otherEntityName": "tank",
-            "otherEntityField": "tankName"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "date",
@@ -36,6 +29,10 @@
             "fieldType": "Integer"
         },
         {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "userId",
             "fieldType": "Integer"
         }
@@ -46,5 +43,6 @@
     "pagination": "pagination",
     "service": "serviceImpl",
     "microserviceName": "pondNotes",
-    "searchEngine": "elasticsearch"
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "notes"
 }

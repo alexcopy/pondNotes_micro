@@ -9,16 +9,13 @@ import java.util.List;
 /**
  * Mapper for the entity ChemicalAnalysis and its DTO ChemicalAnalysisDTO.
  */
-@Mapper(componentModel = "spring", uses = {TankMapper.class, })
+@Mapper(componentModel = "spring", uses = {})
 public interface ChemicalAnalysisMapper {
 
-    @Mapping(source = "tank.id", target = "tankId")
-    @Mapping(source = "tank.tankName", target = "tankTankName")
     ChemicalAnalysisDTO chemicalAnalysisToChemicalAnalysisDTO(ChemicalAnalysis chemicalAnalysis);
 
     List<ChemicalAnalysisDTO> chemicalAnalysesToChemicalAnalysisDTOs(List<ChemicalAnalysis> chemicalAnalyses);
 
-    @Mapping(source = "tankId", target = "tank")
     ChemicalAnalysis chemicalAnalysisDTOToChemicalAnalysis(ChemicalAnalysisDTO chemicalAnalysisDTO);
 
     List<ChemicalAnalysis> chemicalAnalysisDTOsToChemicalAnalyses(List<ChemicalAnalysisDTO> chemicalAnalysisDTOs);

@@ -68,7 +68,7 @@ class FilterPumpCleaningGatlingTest extends Simulation {
             .exec(http("Create new filterPumpCleaning")
             .post("/pondnotes/api/filter-pump-cleanings")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "cleaningDate":"2020-01-01T00:00:00.000Z", "description":"SAMPLE_TEXT", "tempVal":null, "timestamp":"0", "userId":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "cleaningDate":"2020-01-01T00:00:00.000Z", "tempVal":null, "timestamp":"0", "description":"SAMPLE_TEXT", "userId":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_filterPumpCleaning_url"))).exitHereIfFailed
             .pause(10)

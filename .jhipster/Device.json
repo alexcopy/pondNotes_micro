@@ -1,21 +1,6 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "tank",
-            "otherEntityName": "tank",
-            "otherEntityField": "tankName",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "device"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "registereduser",
-            "otherEntityName": "registeredUser",
-            "otherEntityField": "userName"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "deviceName",
@@ -34,10 +19,7 @@
         },
         {
             "fieldName": "description",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
         },
         {
             "fieldName": "timestamp",
@@ -50,5 +32,6 @@
     "pagination": "infinite-scroll",
     "service": "serviceImpl",
     "microserviceName": "pondNotes",
-    "searchEngine": "elasticsearch"
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "notes"
 }

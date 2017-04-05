@@ -34,10 +34,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="descripton" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="temp_val" type="double">
                 <constraints nullable="false" />
             </column>
@@ -46,11 +42,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="user_id" type="integer">
+            <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="tank_id" type="bigint">
+            <column name="user_id" type="integer">
                 <constraints nullable="true" />
             </column>
 

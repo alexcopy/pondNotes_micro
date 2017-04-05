@@ -13,6 +13,8 @@ public class RegisteredUserDTO implements Serializable {
 
     private String userName;
 
+    private String description;
+
     public Long getId() {
         return id;
     }
@@ -26,6 +28,13 @@ public class RegisteredUserDTO implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -54,6 +63,7 @@ public class RegisteredUserDTO implements Serializable {
         return "RegisteredUserDTO{" +
             "id=" + id +
             ", userName='" + userName + "'" +
+            ", description='" + description + "'" +
             '}';
     }
 }

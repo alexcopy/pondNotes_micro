@@ -1,13 +1,6 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "tank",
-            "otherEntityName": "tank",
-            "otherEntityField": "tankName"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "changeDate",
@@ -15,10 +8,6 @@
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
         },
         {
             "fieldName": "readingBefore",
@@ -42,6 +31,10 @@
             ]
         },
         {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "timestamp",
             "fieldType": "Integer"
         },
@@ -56,5 +49,6 @@
     "pagination": "no",
     "service": "serviceImpl",
     "microserviceName": "pondNotes",
-    "searchEngine": "elasticsearch"
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "notes"
 }

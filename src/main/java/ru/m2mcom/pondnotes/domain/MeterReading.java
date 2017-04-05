@@ -29,9 +29,6 @@ public class MeterReading implements Serializable {
     @Column(name = "reading_date", nullable = false)
     private ZonedDateTime readingDate;
 
-    @Column(name = "description")
-    private String description;
-
     @NotNull
     @Column(name = "reading", nullable = false)
     private Double reading;
@@ -43,11 +40,11 @@ public class MeterReading implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "user_id")
     private Integer userId;
-
-    @ManyToOne
-    private Tank tank;
 
     public Long getId() {
         return id;
@@ -68,19 +65,6 @@ public class MeterReading implements Serializable {
 
     public void setReadingDate(ZonedDateTime readingDate) {
         this.readingDate = readingDate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public MeterReading description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Double getReading() {
@@ -122,6 +106,19 @@ public class MeterReading implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public MeterReading description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -133,19 +130,6 @@ public class MeterReading implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Tank getTank() {
-        return tank;
-    }
-
-    public MeterReading tank(Tank tank) {
-        this.tank = tank;
-        return this;
-    }
-
-    public void setTank(Tank tank) {
-        this.tank = tank;
     }
 
     @Override
@@ -173,10 +157,10 @@ public class MeterReading implements Serializable {
         return "MeterReading{" +
             "id=" + id +
             ", readingDate='" + readingDate + "'" +
-            ", description='" + description + "'" +
             ", reading='" + reading + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

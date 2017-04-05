@@ -29,9 +29,6 @@ public class FilterPumpCleaning implements Serializable {
     @Column(name = "cleaning_date", nullable = false)
     private ZonedDateTime cleaningDate;
 
-    @Column(name = "description")
-    private String description;
-
     @NotNull
     @Column(name = "temp_val", nullable = false)
     private Double tempVal;
@@ -39,11 +36,11 @@ public class FilterPumpCleaning implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "user_id")
     private Integer userId;
-
-    @ManyToOne
-    private Device device;
 
     public Long getId() {
         return id;
@@ -64,19 +61,6 @@ public class FilterPumpCleaning implements Serializable {
 
     public void setCleaningDate(ZonedDateTime cleaningDate) {
         this.cleaningDate = cleaningDate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public FilterPumpCleaning description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Double getTempVal() {
@@ -105,6 +89,19 @@ public class FilterPumpCleaning implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public FilterPumpCleaning description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -116,19 +113,6 @@ public class FilterPumpCleaning implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Device getDevice() {
-        return device;
-    }
-
-    public FilterPumpCleaning device(Device device) {
-        this.device = device;
-        return this;
-    }
-
-    public void setDevice(Device device) {
-        this.device = device;
     }
 
     @Override
@@ -156,9 +140,9 @@ public class FilterPumpCleaning implements Serializable {
         return "FilterPumpCleaning{" +
             "id=" + id +
             ", cleaningDate='" + cleaningDate + "'" +
-            ", description='" + description + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

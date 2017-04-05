@@ -3,8 +3,6 @@ package ru.m2mcom.pondnotes.service.dto;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 import ru.m2mcom.pondnotes.domain.enumeration.DeviceType;
 
@@ -21,18 +19,9 @@ public class DeviceDTO implements Serializable {
     @NotNull
     private DeviceType deviceType;
 
-    @NotNull
     private String description;
 
     private Integer timestamp;
-
-    private Long tankId;
-
-    private String tankTankName;
-
-    private Long registereduserId;
-
-    private String registereduserUserName;
 
     public Long getId() {
         return id;
@@ -68,38 +57,6 @@ public class DeviceDTO implements Serializable {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Long getTankId() {
-        return tankId;
-    }
-
-    public void setTankId(Long tankId) {
-        this.tankId = tankId;
-    }
-
-    public String getTankTankName() {
-        return tankTankName;
-    }
-
-    public void setTankTankName(String tankTankName) {
-        this.tankTankName = tankTankName;
-    }
-
-    public Long getRegistereduserId() {
-        return registereduserId;
-    }
-
-    public void setRegistereduserId(Long registeredUserId) {
-        this.registereduserId = registeredUserId;
-    }
-
-    public String getRegistereduserUserName() {
-        return registereduserUserName;
-    }
-
-    public void setRegistereduserUserName(String registeredUserUserName) {
-        this.registereduserUserName = registeredUserUserName;
     }
 
     @Override

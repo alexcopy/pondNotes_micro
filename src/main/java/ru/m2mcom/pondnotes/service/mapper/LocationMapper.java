@@ -9,16 +9,13 @@ import java.util.List;
 /**
  * Mapper for the entity Location and its DTO LocationDTO.
  */
-@Mapper(componentModel = "spring", uses = {RegisteredUserMapper.class, })
+@Mapper(componentModel = "spring", uses = {})
 public interface LocationMapper {
 
-    @Mapping(source = "registereduser.id", target = "registereduserId")
-    @Mapping(source = "registereduser.userName", target = "registereduserUserName")
     LocationDTO locationToLocationDTO(Location location);
 
     List<LocationDTO> locationsToLocationDTOs(List<Location> locations);
 
-    @Mapping(source = "registereduserId", target = "registereduser")
     Location locationDTOToLocation(LocationDTO locationDTO);
 
     List<Location> locationDTOsToLocations(List<LocationDTO> locationDTOs);

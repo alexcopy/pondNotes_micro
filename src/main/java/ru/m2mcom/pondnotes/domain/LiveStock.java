@@ -52,9 +52,6 @@ public class LiveStock implements Serializable {
     @Column(name = "user_id")
     private Integer userId;
 
-    @ManyToOne
-    private Tank tank;
-
     public Long getId() {
         return id;
     }
@@ -152,19 +149,6 @@ public class LiveStock implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Tank getTank() {
-        return tank;
-    }
-
-    public LiveStock tank(Tank tank) {
-        this.tank = tank;
-        return this;
-    }
-
-    public void setTank(Tank tank) {
-        this.tank = tank;
     }
 
     @Override

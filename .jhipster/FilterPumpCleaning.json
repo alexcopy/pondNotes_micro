@@ -1,13 +1,6 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "device",
-            "otherEntityName": "device",
-            "otherEntityField": "deviceName"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "cleaningDate",
@@ -15,10 +8,6 @@
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
         },
         {
             "fieldName": "tempVal",
@@ -32,6 +21,10 @@
             "fieldType": "Integer"
         },
         {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "userId",
             "fieldType": "Integer"
         }
@@ -42,5 +35,6 @@
     "pagination": "pagination",
     "service": "serviceImpl",
     "microserviceName": "pondNotes",
-    "searchEngine": "elasticsearch"
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "notes"
 }

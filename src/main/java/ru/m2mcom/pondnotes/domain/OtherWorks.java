@@ -35,9 +35,6 @@ public class OtherWorks implements Serializable {
     @Column(name = "qty")
     private Integer qty;
 
-    @Column(name = "descripton")
-    private String descripton;
-
     @NotNull
     @Column(name = "temp_val", nullable = false)
     private Double tempVal;
@@ -45,11 +42,11 @@ public class OtherWorks implements Serializable {
     @Column(name = "timestamp")
     private Integer timestamp;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "user_id")
     private Integer userId;
-
-    @ManyToOne
-    private Tank tank;
 
     public Long getId() {
         return id;
@@ -98,19 +95,6 @@ public class OtherWorks implements Serializable {
         this.qty = qty;
     }
 
-    public String getDescripton() {
-        return descripton;
-    }
-
-    public OtherWorks descripton(String descripton) {
-        this.descripton = descripton;
-        return this;
-    }
-
-    public void setDescripton(String descripton) {
-        this.descripton = descripton;
-    }
-
     public Double getTempVal() {
         return tempVal;
     }
@@ -137,6 +121,19 @@ public class OtherWorks implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public OtherWorks description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -148,19 +145,6 @@ public class OtherWorks implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Tank getTank() {
-        return tank;
-    }
-
-    public OtherWorks tank(Tank tank) {
-        this.tank = tank;
-        return this;
-    }
-
-    public void setTank(Tank tank) {
-        this.tank = tank;
     }
 
     @Override
@@ -190,9 +174,9 @@ public class OtherWorks implements Serializable {
             ", date='" + date + "'" +
             ", reason='" + reason + "'" +
             ", qty='" + qty + "'" +
-            ", descripton='" + descripton + "'" +
             ", tempVal='" + tempVal + "'" +
             ", timestamp='" + timestamp + "'" +
+            ", description='" + description + "'" +
             ", userId='" + userId + "'" +
             '}';
     }

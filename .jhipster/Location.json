@@ -1,17 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "registereduser",
-            "otherEntityName": "registeredUser",
-            "otherEntityField": "userName"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "streetAddress",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "postalCode",
@@ -19,11 +15,17 @@
         },
         {
             "fieldName": "city",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "county",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "timestamp",
@@ -36,5 +38,6 @@
     "pagination": "no",
     "service": "serviceImpl",
     "microserviceName": "pondNotes",
-    "searchEngine": "elasticsearch"
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "notes"
 }

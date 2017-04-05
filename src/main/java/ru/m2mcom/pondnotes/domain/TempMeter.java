@@ -32,14 +32,14 @@ public class TempMeter implements Serializable {
     @Column(name = "temp_val", nullable = false)
     private Double tempVal;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "timestamp")
     private Integer timestamp;
 
     @Column(name = "user_id")
     private Integer userId;
-
-    @ManyToOne
-    private Tank tank;
 
     public Long getId() {
         return id;
@@ -75,6 +75,19 @@ public class TempMeter implements Serializable {
         this.tempVal = tempVal;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public TempMeter description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Integer getTimestamp() {
         return timestamp;
     }
@@ -99,19 +112,6 @@ public class TempMeter implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Tank getTank() {
-        return tank;
-    }
-
-    public TempMeter tank(Tank tank) {
-        this.tank = tank;
-        return this;
-    }
-
-    public void setTank(Tank tank) {
-        this.tank = tank;
     }
 
     @Override
@@ -140,6 +140,7 @@ public class TempMeter implements Serializable {
             "id=" + id +
             ", readingDate='" + readingDate + "'" +
             ", tempVal='" + tempVal + "'" +
+            ", description='" + description + "'" +
             ", timestamp='" + timestamp + "'" +
             ", userId='" + userId + "'" +
             '}';

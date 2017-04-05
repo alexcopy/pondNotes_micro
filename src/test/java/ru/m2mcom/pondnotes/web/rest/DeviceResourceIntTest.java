@@ -199,25 +199,6 @@ public class DeviceResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDescriptionIsRequired() throws Exception {
-        int databaseSizeBeforeTest = deviceRepository.findAll().size();
-        // set the field null
-        device.setDescription(null);
-
-        // Create the Device, which fails.
-        DeviceDTO deviceDTO = deviceMapper.deviceToDeviceDTO(device);
-
-        restDeviceMockMvc.perform(post("/api/devices")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(deviceDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Device> deviceList = deviceRepository.findAll();
-        assertThat(deviceList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllDevices() throws Exception {
         // Initialize the database
         deviceRepository.saveAndFlush(device);

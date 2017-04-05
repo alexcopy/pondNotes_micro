@@ -5,6 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -23,23 +24,23 @@ public class Location implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "street_address")
+    @NotNull
+    @Column(name = "street_address", nullable = false)
     private String streetAddress;
 
     @Column(name = "postal_code")
     private String postalCode;
 
-    @Column(name = "city")
+    @NotNull
+    @Column(name = "city", nullable = false)
     private String city;
 
-    @Column(name = "county")
+    @NotNull
+    @Column(name = "county", nullable = false)
     private String county;
 
     @Column(name = "timestamp")
     private Integer timestamp;
-
-    @ManyToOne
-    private RegisteredUser registereduser;
 
     public Long getId() {
         return id;
@@ -112,19 +113,6 @@ public class Location implements Serializable {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public RegisteredUser getRegistereduser() {
-        return registereduser;
-    }
-
-    public Location registereduser(RegisteredUser registeredUser) {
-        this.registereduser = registeredUser;
-        return this;
-    }
-
-    public void setRegistereduser(RegisteredUser registeredUser) {
-        this.registereduser = registeredUser;
     }
 
     @Override

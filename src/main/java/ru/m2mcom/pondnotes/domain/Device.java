@@ -35,19 +35,11 @@ public class Device implements Serializable {
     @Column(name = "device_type", nullable = false)
     private DeviceType deviceType;
 
-    @NotNull
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
 
     @Column(name = "timestamp")
     private Integer timestamp;
-
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Tank tank;
-
-    @ManyToOne
-    private RegisteredUser registereduser;
 
     public Long getId() {
         return id;
@@ -107,32 +99,6 @@ public class Device implements Serializable {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Tank getTank() {
-        return tank;
-    }
-
-    public Device tank(Tank tank) {
-        this.tank = tank;
-        return this;
-    }
-
-    public void setTank(Tank tank) {
-        this.tank = tank;
-    }
-
-    public RegisteredUser getRegistereduser() {
-        return registereduser;
-    }
-
-    public Device registereduser(RegisteredUser registeredUser) {
-        this.registereduser = registeredUser;
-        return this;
-    }
-
-    public void setRegistereduser(RegisteredUser registeredUser) {
-        this.registereduser = registeredUser;
     }
 
     @Override

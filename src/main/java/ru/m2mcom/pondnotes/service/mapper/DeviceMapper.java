@@ -9,19 +9,13 @@ import java.util.List;
 /**
  * Mapper for the entity Device and its DTO DeviceDTO.
  */
-@Mapper(componentModel = "spring", uses = {TankMapper.class, RegisteredUserMapper.class, })
+@Mapper(componentModel = "spring", uses = {})
 public interface DeviceMapper {
 
-    @Mapping(source = "tank.id", target = "tankId")
-    @Mapping(source = "tank.tankName", target = "tankTankName")
-    @Mapping(source = "registereduser.id", target = "registereduserId")
-    @Mapping(source = "registereduser.userName", target = "registereduserUserName")
     DeviceDTO deviceToDeviceDTO(Device device);
 
     List<DeviceDTO> devicesToDeviceDTOs(List<Device> devices);
 
-    @Mapping(source = "tankId", target = "tank")
-    @Mapping(source = "registereduserId", target = "registereduser")
     Device deviceDTOToDevice(DeviceDTO deviceDTO);
 
     List<Device> deviceDTOsToDevices(List<DeviceDTO> deviceDTOs);
