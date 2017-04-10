@@ -3,14 +3,14 @@ entity Location {
 	postalCode String,
 	city String,
 	county String,
-	timestamp Integer
+	timestamp Long
 }
 
 entity Tank {
 	tankName String required,
     tankType TankType required,
     description String,
-    timestamp Integer,
+    timestamp Long,
 
 }
 
@@ -19,7 +19,7 @@ entity Device {
 	deviceName String required,
     deviceType DeviceType required,
     description String required,
-    timestamp Integer,
+    timestamp Long,
 
 }
 
@@ -33,8 +33,8 @@ enum DeviceType {
 entity TempMeter {
     readingDate ZonedDateTime,
 	tempVal   Double required,
-    timestamp Integer,
-    userId Integer
+    timestamp Long,
+    userId Long
 }
 
 entity MeterReading {
@@ -42,16 +42,16 @@ entity MeterReading {
 	description String,
 	reading Double required,
 	tempVal Double required,
-	timestamp Integer,
-	userId Integer
+	timestamp Long,
+	userId Long
 }
 
  entity FilterPumpCleaning {
 	cleaningDate ZonedDateTime required,
 	description String,
     tempVal Double required,
-    timestamp Integer,
-    userId Integer
+    timestamp Long,
+    userId Long
 }
 
  entity WaterChange {
@@ -60,8 +60,8 @@ entity MeterReading {
     readingBefore Double required,
     readingAfter Double required,
     tempVal Double required,
-    timestamp Integer,
-    userId Integer
+    timestamp Long,
+    userId Long
 }
 
  entity LiveStock {
@@ -70,8 +70,8 @@ entity MeterReading {
 	description String,
     qty Integer required,
     tempVal Double required,
-    timestamp Integer,
-    userId Integer
+    timestamp Long,
+    userId Long
 }
 
  entity ChemicalAnalysis {
@@ -81,8 +81,8 @@ entity MeterReading {
     nH4 String,
     ph String,
     tempVal Double required,
-    timestamp Integer,
-    userId Integer
+    timestamp Long,
+    userId Long
 }
 
   entity Chemicals {
@@ -90,8 +90,8 @@ entity MeterReading {
 	qty Integer,
     reason String,
     tempVal Double required,
-    timestamp Integer,
-    userId Integer
+    timestamp Long,
+    userId Long
 }
 
   entity OtherWorks {
@@ -100,8 +100,8 @@ entity MeterReading {
 	qty Integer,
     descripton String,
     tempVal Double required,
-    timestamp Integer,
-    userId Integer
+    timestamp Long,
+    userId Long
 }
 
 entity RegisteredUser{

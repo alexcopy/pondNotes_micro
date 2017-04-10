@@ -53,8 +53,8 @@ public class LocationResourceIntTest {
     private static final String DEFAULT_COUNTY = "AAAAAAAAAA";
     private static final String UPDATED_COUNTY = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_TIMESTAMP = 1;
-    private static final Integer UPDATED_TIMESTAMP = 2;
+    private static final Long DEFAULT_TIMESTAMP = 1L;
+    private static final Long UPDATED_TIMESTAMP = 2L;
 
     @Autowired
     private LocationRepository locationRepository;
@@ -178,7 +178,7 @@ public class LocationResourceIntTest {
             .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE.toString())))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
             .andExpect(jsonPath("$.[*].county").value(hasItem(DEFAULT_COUNTY.toString())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP.intValue())));
     }
 
     @Test
@@ -196,7 +196,7 @@ public class LocationResourceIntTest {
             .andExpect(jsonPath("$.postalCode").value(DEFAULT_POSTAL_CODE.toString()))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY.toString()))
             .andExpect(jsonPath("$.county").value(DEFAULT_COUNTY.toString()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP.intValue()));
     }
 
     @Test
@@ -302,7 +302,7 @@ public class LocationResourceIntTest {
             .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE.toString())))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
             .andExpect(jsonPath("$.[*].county").value(hasItem(DEFAULT_COUNTY.toString())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP.intValue())));
     }
 
     @Test

@@ -68,7 +68,7 @@ class TempMeterGatlingTest extends Simulation {
             .exec(http("Create new tempMeter")
             .post("/pondnotes/api/temp-meters")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "readingDate":"2020-01-01T00:00:00.000Z", "tempVal":null, "timestamp":"0", "userId":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "readingDate":"2020-01-01T00:00:00.000Z", "tempVal":null, "timestamp":null, "userId":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_tempMeter_url"))).exitHereIfFailed
             .pause(10)

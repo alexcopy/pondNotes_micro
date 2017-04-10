@@ -6,6 +6,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 
 /**
@@ -36,7 +37,7 @@ public class Location implements Serializable {
     private String county;
 
     @Column(name = "timestamp")
-    private Integer timestamp;
+    private Long timestamp;
 
     public Long getId() {
         return id;
@@ -98,17 +99,22 @@ public class Location implements Serializable {
         this.county = county;
     }
 
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public Location timestamp(Integer timestamp) {
+    public Location timestamp(Long timestamp) {
         this.timestamp = timestamp;
         return this;
     }
 
-    public void setTimestamp(Integer timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(Long timestamp) {
+        if (timestamp != null) {
+            this.timestamp = timestamp;
+
+        } else {
+            this.timestamp = Instant.now().getEpochSecond();
+        }
     }
 
     @Override

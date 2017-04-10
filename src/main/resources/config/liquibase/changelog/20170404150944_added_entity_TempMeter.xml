@@ -30,11 +30,11 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="timestamp" type="integer">
+            <column name="timestamp" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="user_id" type="integer">
+            <column name="user_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

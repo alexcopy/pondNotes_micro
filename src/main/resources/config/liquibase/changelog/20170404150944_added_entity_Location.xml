@@ -38,7 +38,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="timestamp" type="integer">
+            <column name="timestamp" type="bigint">
                 <constraints nullable="true" />
             </column>
 

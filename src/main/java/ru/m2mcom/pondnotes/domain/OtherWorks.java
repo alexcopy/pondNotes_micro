@@ -7,6 +7,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -43,10 +44,10 @@ public class OtherWorks implements Serializable {
     private Double tempVal;
 
     @Column(name = "timestamp")
-    private Integer timestamp;
+    private Long timestamp;
 
     @Column(name = "user_id")
-    private Integer userId;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -121,29 +122,34 @@ public class OtherWorks implements Serializable {
         this.tempVal = tempVal;
     }
 
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public OtherWorks timestamp(Integer timestamp) {
+    public OtherWorks timestamp(Long timestamp) {
         this.timestamp = timestamp;
         return this;
     }
 
-    public void setTimestamp(Integer timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(Long timestamp) {
+        if (timestamp != null) {
+            this.timestamp = timestamp;
+
+        } else {
+            this.timestamp = Instant.now().getEpochSecond();
+        }
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public OtherWorks userId(Integer userId) {
+    public OtherWorks userId(Long userId) {
         this.userId = userId;
         return this;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

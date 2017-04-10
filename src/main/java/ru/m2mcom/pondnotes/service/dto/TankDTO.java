@@ -21,7 +21,7 @@ public class TankDTO implements Serializable {
 
     private String description;
 
-    private Integer timestamp;
+    private Long timestamp;
 
     public Long getId() {
         return id;
@@ -51,11 +51,11 @@ public class TankDTO implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 

@@ -19,7 +19,7 @@ public class LocationDTO implements Serializable {
 
     private String county;
 
-    private Integer timestamp;
+    private Long timestamp;
 
     public Long getId() {
         return id;
@@ -56,11 +56,11 @@ public class LocationDTO implements Serializable {
     public void setCounty(String county) {
         this.county = county;
     }
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 

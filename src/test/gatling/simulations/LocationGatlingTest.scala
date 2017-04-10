@@ -68,7 +68,7 @@ class LocationGatlingTest extends Simulation {
             .exec(http("Create new location")
             .post("/pondnotes/api/locations")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "streetAddress":"SAMPLE_TEXT", "postalCode":"SAMPLE_TEXT", "city":"SAMPLE_TEXT", "county":"SAMPLE_TEXT", "timestamp":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "streetAddress":"SAMPLE_TEXT", "postalCode":"SAMPLE_TEXT", "city":"SAMPLE_TEXT", "county":"SAMPLE_TEXT", "timestamp":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_location_url"))).exitHereIfFailed
             .pause(10)

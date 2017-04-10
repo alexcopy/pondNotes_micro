@@ -62,11 +62,11 @@ public class LiveStockResourceIntTest {
     private static final Double DEFAULT_TEMP_VAL = 1D;
     private static final Double UPDATED_TEMP_VAL = 2D;
 
-    private static final Integer DEFAULT_TIMESTAMP = 1;
-    private static final Integer UPDATED_TIMESTAMP = 2;
+    private static final Long DEFAULT_TIMESTAMP = 1L;
+    private static final Long UPDATED_TIMESTAMP = 2L;
 
-    private static final Integer DEFAULT_USER_ID = 1;
-    private static final Integer UPDATED_USER_ID = 2;
+    private static final Long DEFAULT_USER_ID = 1L;
+    private static final Long UPDATED_USER_ID = 2L;
 
     @Autowired
     private LiveStockRepository liveStockRepository;
@@ -252,8 +252,8 @@ public class LiveStockResourceIntTest {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
-            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP.intValue())))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID.intValue())));
     }
 
     @Test
@@ -272,8 +272,8 @@ public class LiveStockResourceIntTest {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.qty").value(DEFAULT_QTY))
             .andExpect(jsonPath("$.tempVal").value(DEFAULT_TEMP_VAL.doubleValue()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP))
-            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP.intValue()))
+            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID.intValue()));
     }
 
     @Test
@@ -384,8 +384,8 @@ public class LiveStockResourceIntTest {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].qty").value(hasItem(DEFAULT_QTY)))
             .andExpect(jsonPath("$.[*].tempVal").value(hasItem(DEFAULT_TEMP_VAL.doubleValue())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)))
-            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP.intValue())))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID.intValue())));
     }
 
     @Test

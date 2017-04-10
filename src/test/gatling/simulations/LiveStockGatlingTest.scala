@@ -68,7 +68,7 @@ class LiveStockGatlingTest extends Simulation {
             .exec(http("Create new liveStock")
             .post("/pondnotes/api/live-stocks")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "date":"2020-01-01T00:00:00.000Z", "reason":null, "description":"SAMPLE_TEXT", "qty":"0", "tempVal":null, "timestamp":"0", "userId":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "date":"2020-01-01T00:00:00.000Z", "reason":null, "description":"SAMPLE_TEXT", "qty":"0", "tempVal":null, "timestamp":null, "userId":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_liveStock_url"))).exitHereIfFailed
             .pause(10)

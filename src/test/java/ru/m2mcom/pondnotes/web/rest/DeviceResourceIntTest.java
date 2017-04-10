@@ -51,8 +51,8 @@ public class DeviceResourceIntTest {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_TIMESTAMP = 1;
-    private static final Integer UPDATED_TIMESTAMP = 2;
+    private static final Long DEFAULT_TIMESTAMP = 1L;
+    private static final Long UPDATED_TIMESTAMP = 2L;
 
     @Autowired
     private DeviceRepository deviceRepository;
@@ -230,7 +230,7 @@ public class DeviceResourceIntTest {
             .andExpect(jsonPath("$.[*].deviceName").value(hasItem(DEFAULT_DEVICE_NAME.toString())))
             .andExpect(jsonPath("$.[*].deviceType").value(hasItem(DEFAULT_DEVICE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP.intValue())));
     }
 
     @Test
@@ -247,7 +247,7 @@ public class DeviceResourceIntTest {
             .andExpect(jsonPath("$.deviceName").value(DEFAULT_DEVICE_NAME.toString()))
             .andExpect(jsonPath("$.deviceType").value(DEFAULT_DEVICE_TYPE.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP));
+            .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP.intValue()));
     }
 
     @Test
@@ -350,7 +350,7 @@ public class DeviceResourceIntTest {
             .andExpect(jsonPath("$.[*].deviceName").value(hasItem(DEFAULT_DEVICE_NAME.toString())))
             .andExpect(jsonPath("$.[*].deviceType").value(hasItem(DEFAULT_DEVICE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP)));
+            .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP.intValue())));
     }
 
     @Test

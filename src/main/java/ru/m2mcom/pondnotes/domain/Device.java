@@ -7,6 +7,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 
 import ru.m2mcom.pondnotes.domain.enumeration.DeviceType;
@@ -40,7 +41,7 @@ public class Device implements Serializable {
     private String description;
 
     @Column(name = "timestamp")
-    private Integer timestamp;
+    private Long timestamp;
 
     public Long getId() {
         return id;
@@ -89,17 +90,22 @@ public class Device implements Serializable {
         this.description = description;
     }
 
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public Device timestamp(Integer timestamp) {
+    public Device timestamp(Long timestamp) {
         this.timestamp = timestamp;
         return this;
     }
 
-    public void setTimestamp(Integer timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(Long timestamp) {
+        if (timestamp != null) {
+            this.timestamp = timestamp;
+
+        } else {
+            this.timestamp = Instant.now().getEpochSecond();
+        }
     }
 
     @Override

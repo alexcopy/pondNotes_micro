@@ -30,11 +30,11 @@
         },
         {
             "fieldName": "timestamp",
-            "fieldType": "Integer"
+            "fieldType": "Long"
         },
         {
             "fieldName": "userId",
-            "fieldType": "Integer"
+            "fieldType": "Long"
         }
     ],
     "changelogDate": "20170404150944",
